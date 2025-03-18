@@ -81,7 +81,7 @@ const HeroSection = () => {
           
           <div className="w-full max-w-md glassmorphism p-1 rounded-2xl border-psyco-green-muted/50">
             <div className="relative w-full aspect-square overflow-hidden rounded-xl">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-psyco-black-DEFAULT/90 z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
               <img 
                 src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&q=80&w=2070"
                 alt="Concert with professional lighting"
