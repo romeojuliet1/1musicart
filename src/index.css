@@ -59,7 +59,12 @@
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg hover:shadow-psyco-green-DEFAULT/20;
+    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0);
+  }
+  
+  .card-hover:hover {
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
   }
   
   .btn-glow {

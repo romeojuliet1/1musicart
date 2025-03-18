@@ -79,7 +79,7 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="w-full max-w-md glassmorphism p-1 rounded-2xl border-psyco-green-muted/50">
+          <div className="w-full max-w-md glassmorphism p-1 rounded-2xl border-psyco-green-muted/50 card-hover">
             <div className="relative w-full aspect-square overflow-hidden rounded-xl">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
               <img 
