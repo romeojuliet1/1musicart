@@ -29,22 +29,23 @@ const HeroSection = () => {
       <div 
         ref={backgroundRef}
         className="absolute inset-0 z-0 transition-transform duration-500 ease-out"
+        style={{ willChange: 'transform' }}
       >
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-psyco-green-DEFAULT/5 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-psyco-green-light/5 rounded-full blur-3xl animate-float animation-delay-1000"></div>
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-psyco-green-DEFAULT/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-psyco-green-light/5 rounded-full blur-3xl"></div>
       </div>
       
       {/* Decorative Elements */}
       <div className="absolute top-1/4 left-20 hidden lg:block">
-        <Speaker className="h-12 w-12 text-psyco-green-DEFAULT/30 animate-pulse-glow" />
+        <Speaker className="h-12 w-12 text-psyco-green-DEFAULT/30" />
       </div>
       <div className="absolute bottom-1/4 right-20 hidden lg:block">
-        <Music className="h-16 w-16 text-psyco-green-DEFAULT/30 animate-pulse-glow" />
+        <Music className="h-16 w-16 text-psyco-green-DEFAULT/30" />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="max-w-2xl animate-fade-in">
+          <div className="max-w-2xl">
             <div className="flex items-center mb-4">
               <div className="bg-psyco-green-DEFAULT/20 text-psyco-green-light rounded-full px-4 py-1 text-sm font-medium inline-flex items-center">
                 <Sparkles className="h-3.5 w-3.5 mr-1" />
@@ -78,13 +79,13 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="w-full max-w-md glassmorphism p-1 animate-fade-in animation-delay-300 rounded-2xl border-psyco-green-muted/50">
+          <div className="w-full max-w-md glassmorphism p-1 rounded-2xl border-psyco-green-muted/50">
             <div className="relative w-full aspect-square overflow-hidden rounded-xl">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-psyco-black-DEFAULT/90 z-10"></div>
               <img 
                 src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&q=80&w=2070"
                 alt="Concert with professional lighting"
-                className="object-cover h-full w-full transition-transform duration-10000 hover:scale-110"
+                className="object-cover h-full w-full"
               />
               <div className="absolute bottom-6 left-6 right-6 z-20">
                 <p className="text-psyco-green-light font-medium mb-1">Featured Event</p>
