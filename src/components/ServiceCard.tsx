@@ -11,6 +11,7 @@ interface ServiceCardProps {
   imageSrc: string;
   link: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const ServiceCard = ({
@@ -19,13 +20,17 @@ const ServiceCard = ({
   icon,
   imageSrc,
   link,
-  className
+  className,
+  style
 }: ServiceCardProps) => {
   return (
-    <div className={cn(
-      "glassmorphism overflow-hidden group card-hover transition-all duration-500",
-      className
-    )}>
+    <div 
+      className={cn(
+        "glassmorphism overflow-hidden group card-hover transition-all duration-500",
+        className
+      )}
+      style={style}
+    >
       <div className="relative h-48 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-psyco-black-DEFAULT to-transparent z-10"></div>
         <img 

@@ -1,6 +1,5 @@
-
 import React, { useEffect } from "react";
-import { Volume2, Lightbulb, Music2, Speaker, Mic, MonitorSpeaker, Wrench, Video, FilmStrip, MoveRight } from "lucide-react";
+import { Volume2, Lightbulb, Music2, Speaker, Mic, MonitorSpeaker, Wrench, Video, Film, MoveRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Services = () => {
@@ -84,7 +83,7 @@ const Services = () => {
       description: "Projectors, LED screens, and visual mapping solutions."
     },
     {
-      icon: <FilmStrip size={24} />,
+      icon: <Film size={24} />,
       title: "Special Effects",
       description: "Fog machines, CO2 jets, and other special effects."
     }

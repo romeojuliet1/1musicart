@@ -11,6 +11,7 @@ interface TestimonialCardProps {
   rating: number;
   imageSrc: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const TestimonialCard = ({
@@ -20,13 +21,17 @@ const TestimonialCard = ({
   testimonial,
   rating,
   imageSrc,
-  className
+  className,
+  style
 }: TestimonialCardProps) => {
   return (
-    <div className={cn(
-      "glassmorphism p-6 relative card-hover",
-      className
-    )}>
+    <div 
+      className={cn(
+        "glassmorphism p-6 relative card-hover",
+        className
+      )}
+      style={style}
+    >
       <div className="absolute top-6 right-6 text-psyco-green-DEFAULT opacity-20">
         <Quote size={48} />
       </div>

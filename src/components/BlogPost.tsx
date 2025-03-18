@@ -15,6 +15,7 @@ interface BlogPostProps {
   imageSrc: string;
   featured?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const BlogPost = ({
@@ -27,7 +28,8 @@ const BlogPost = ({
   category,
   imageSrc,
   featured = false,
-  className
+  className,
+  style
 }: BlogPostProps) => {
   return (
     <article 
@@ -36,6 +38,7 @@ const BlogPost = ({
         featured ? "md:col-span-2" : "",
         className
       )}
+      style={style}
     >
       <Link to={`/blog/${id}`}>
         <div className="relative h-52 overflow-hidden">
