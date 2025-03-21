@@ -31,30 +31,30 @@ const HeroSection = () => {
         className="absolute inset-0 z-0 transition-transform duration-500 ease-out"
         style={{ willChange: 'transform' }}
       >
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-psyco-green-DEFAULT/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-psyco-green-light/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-green-400/5 rounded-full blur-3xl"></div>
       </div>
       
       {/* Decorative Elements */}
       <div className="absolute top-1/4 left-20 hidden lg:block">
-        <Speaker className="h-12 w-12 text-psyco-green-DEFAULT/30" />
+        <Speaker className="h-12 w-12 text-green-500/30" />
       </div>
       <div className="absolute bottom-1/4 right-20 hidden lg:block">
-        <Music className="h-16 w-16 text-psyco-green-DEFAULT/30" />
+        <Music className="h-16 w-16 text-green-500/30" />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="max-w-2xl">
             <div className="flex items-center mb-4">
-              <div className="bg-psyco-green-DEFAULT/20 text-psyco-green-light rounded-full px-4 py-1 text-sm font-medium inline-flex items-center">
+              <div className="bg-green-500/20 text-green-400 rounded-full px-4 py-1 text-sm font-medium inline-flex items-center">
                 <Sparkles className="h-3.5 w-3.5 mr-1" />
                 Premium Sound & Light Services
               </div>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-glow mb-6">
-              Elevate Your <span className="text-psyco-green-DEFAULT">Event</span> Experience
+              Elevate Your <span className="text-green-500">Event</span> Experience
             </h1>
             
             <p className="text-xl text-gray-300 mb-8">
@@ -65,21 +65,21 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/booking"
-                className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 flex items-center justify-center btn-glow"
+                className="bg-green-500 hover:bg-green-700 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 flex items-center justify-center btn-glow"
               >
                 Book Now
                 <MoveRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
                 to="/services"
-                className="bg-transparent border border-psyco-green-DEFAULT text-psyco-green-DEFAULT hover:bg-psyco-green-DEFAULT/10 font-medium py-3 px-8 rounded-lg transition-all duration-300 flex items-center justify-center"
+                className="bg-transparent border border-green-500 text-green-500 hover:bg-green-500/10 font-medium py-3 px-8 rounded-lg transition-all duration-300 flex items-center justify-center"
               >
                 Our Services
               </Link>
             </div>
           </div>
           
-          <div className="w-full max-w-md glassmorphism p-1 rounded-2xl border-psyco-green-muted/50 card-hover">
+          <div className="w-full max-w-md glassmorphism p-1 rounded-2xl border-green-500/50 card-hover">
             <div className="relative w-full aspect-square overflow-hidden rounded-xl">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
               <img 
@@ -88,7 +88,7 @@ const HeroSection = () => {
                 className="object-cover h-full w-full"
               />
               <div className="absolute bottom-6 left-6 right-6 z-20">
-                <p className="text-psyco-green-light font-medium mb-1">Featured Event</p>
+                <p className="text-green-400 font-medium mb-1">Featured Event</p>
                 <h3 className="text-white text-xl font-semibold">Summer Music Festival 2023</h3>
                 <p className="text-gray-300 text-sm mt-1">Full sound system and dynamic lighting setup</p>
               </div>

@@ -44,10 +44,10 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <NavLink to="/" className="flex items-center space-x-2">
           <div className="relative flex items-center">
-            <Music className="h-8 w-8 text-psyco-green-light animate-glow" />
-            <Volume2 className="h-6 w-6 text-psyco-green-DEFAULT absolute -right-3" />
+            <Music className="h-8 w-8 text-green-400 animate-glow" />
+            <Volume2 className="h-6 w-6 text-green-500 absolute -right-3" />
           </div>
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-psyco-green-light to-psyco-green-DEFAULT">
+          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-500">
             Psycotik Crew
           </span>
         </NavLink>
@@ -60,8 +60,8 @@ const Navbar = () => {
               to={link.path}
               className={({ isActive }) =>
                 cn(
-                  'text-white hover:text-psyco-green-light transition-colors duration-300 link-hover text-sm font-medium tracking-wide',
-                  isActive && 'text-psyco-green-DEFAULT after:w-full'
+                  'text-white hover:text-green-400 transition-colors duration-300 link-hover text-sm font-medium tracking-wide',
+                  isActive && 'text-green-500 after:w-full'
                 )
               }
             >
@@ -72,7 +72,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation Toggle */}
         <button
-          className="md:hidden text-white hover:text-psyco-green-light transition-colors"
+          className="md:hidden text-white hover:text-green-400 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -93,8 +93,8 @@ const Navbar = () => {
               to={link.path}
               className={({ isActive }) =>
                 cn(
-                  'text-white hover:text-psyco-green-light py-2 text-xl transition-colors duration-300',
-                  isActive && 'text-psyco-green-DEFAULT'
+                  'text-white hover:text-green-400 py-2 text-xl transition-colors duration-300',
+                  isActive && 'text-green-500'
                 )
               }
             >

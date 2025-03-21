@@ -54,7 +54,7 @@
 
 @layer components {
   .glassmorphism {
-    @apply backdrop-blur-lg bg-black/70 border border-psyco-green-muted rounded-xl;
+    @apply backdrop-blur-lg bg-black/70 border border-green-500/10 rounded-xl;
     box-shadow: 0 4px 30px rgba(16, 185, 129, 0.1);
   }
   
@@ -108,22 +108,22 @@
 }
 
 .calendar-container .react-calendar {
-  @apply glassmorphism border-psyco-green-muted p-4;
+  @apply glassmorphism border-green-500/10 p-4;
 }
 
 .calendar-container .react-calendar__tile--active {
-  @apply bg-psyco-green-DEFAULT text-white;
+  @apply bg-green-500 text-white;
 }
 
 .calendar-container .react-calendar__tile--now {
-  @apply bg-psyco-green-muted text-psyco-green-DEFAULT;
+  @apply bg-green-500/10 text-green-500;
 }
 
 .calendar-container .react-calendar__navigation button:enabled:hover,
 .calendar-container .react-calendar__navigation button:enabled:focus,
 .calendar-container .react-calendar__tile:enabled:hover,
 .calendar-container .react-calendar__tile:enabled:focus {
-  @apply bg-psyco-green-muted text-white;
+  @apply bg-green-500/10 text-white;
 }
 
 /* Custom scrollbar */
@@ -137,9 +137,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-psyco-green-dark rounded-full;
+  @apply bg-green-700 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-psyco-green-DEFAULT;
+  @apply bg-green-500;
 }
