@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Music, Volume2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -43,9 +43,12 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <NavLink to="/" className="flex items-center space-x-2">
-          <div className="relative flex items-center">
-            <Music className="h-8 w-8 text-green-400 animate-glow" />
-            <Volume2 className="h-6 w-6 text-green-500 absolute -right-3" />
+          <div className="h-10 w-10 relative">
+            <img 
+              src="/lovable-uploads/8acfad30-aa90-4edd-b779-aafd43058584.png" 
+              alt="Psycotik Crew Logo" 
+              className="h-full w-full object-contain" 
+            />
           </div>
           <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-500">
             Psycotik Crew
