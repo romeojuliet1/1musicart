@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2">
               <div className="h-8 w-8 relative">
                 <img 
-                  src="/lovable-uploads/aec4ecb9-a0ce-4ed0-b520-e9a7264c0d97.jpeg" 
+                  src="/lovable-uploads/8acfad30-aa90-4edd-b779-aafd43058584.png" 
                   alt="Psycotik Crew Logo" 
                   className="h-full w-full object-contain" 
                 />
