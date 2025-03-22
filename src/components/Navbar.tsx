@@ -45,7 +45,7 @@ const Navbar = () => {
         <NavLink to="/" className="flex items-center space-x-2">
           <div className="h-10 w-10 relative">
             <img 
-              src="/lovable-uploads/8acfad30-aa90-4edd-b779-aafd43058584.png" 
+              src="/lovable-uploads/aec4ecb9-a0ce-4ed0-b520-e9a7264c0d97.jpeg" 
               alt="Psycotik Crew Logo" 
               className="h-full w-full object-contain" 
             />
