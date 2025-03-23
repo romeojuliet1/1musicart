@@ -44,7 +44,7 @@ const HeroSection = () => {
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center gap-12">
+        <div className="flex flex-col items-center">
           <div className="max-w-2xl">
             <div className="flex items-center mb-4">
               <div className="bg-green-500/20 text-green-400 rounded-full px-4 py-1 text-sm font-medium inline-flex items-center">
@@ -76,22 +76,6 @@ const HeroSection = () => {
               >
                 Our Services
               </Link>
-            </div>
-          </div>
-          
-          <div className="w-full max-w-md glassmorphism p-1 rounded-2xl border-green-500/50 card-hover">
-            <div className="relative w-full aspect-square overflow-hidden rounded-xl">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&q=80&w=2070"
-                alt="Concert with professional lighting"
-                className="object-cover h-full w-full"
-              />
-              <div className="absolute bottom-6 left-6 right-6 z-20">
-                <p className="text-green-400 font-medium mb-1">Featured Event</p>
-                <h3 className="text-white text-xl font-semibold">Summer Music Festival 2023</h3>
-                <p className="text-gray-300 text-sm mt-1">Full sound system and dynamic lighting setup</p>
-              </div>
             </div>
           </div>
         </div>
