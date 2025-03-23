@@ -14,7 +14,7 @@ const Services = () => {
       icon: <Volume2 size={32} />,
       title: "Sound Systems",
       description: "Professional sound setups tailored to your venue and event size. From intimate gatherings to large festival spaces, we provide crystal-clear audio with expert setup and operation.",
-      image: "https://images.unsplash.com/photo-1516780236580-ef2963a44495?auto=format&fit=crop&q=80",
+      image: "/lovable-uploads/708f9e32-840d-46a4-aaa4-75ad2689e16f.png",
       features: [
         "Line array speaker systems",
         "Subwoofer configurations",
