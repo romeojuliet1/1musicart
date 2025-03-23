@@ -31,7 +31,7 @@ const Index = () => {
       title: "DJ Services",
       description: "Experienced DJs to keep your event energized with the perfect music selection.",
       icon: <Music2 size={24} />,
-      imageSrc: "https://images.unsplash.com/photo-1571266087814-e7360f035f25?auto=format&fit=crop&q=80",
+      imageSrc: "/lovable-uploads/03e83f18-76a1-4349-a197-dbde03a93343.png",
       link: "/services#dj"
     }
   ];
