@@ -17,7 +17,7 @@ const Index = () => {
       title: "Sound Systems",
       description: "Professional sound systems for any size venue, from small gatherings to large festivals.",
       icon: <Volume2 size={24} />,
-      imageSrc: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80",
+      imageSrc: "/lovable-uploads/708f9e32-840d-46a4-aaa4-75ad2689e16f.png",
       link: "/services#sound"
     },
     {
