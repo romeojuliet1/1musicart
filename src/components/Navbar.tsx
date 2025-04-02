@@ -42,15 +42,15 @@ const Navbar = () => {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <NavLink to="/" className="flex items-center space-x-2">
-          <div className="h-10 w-10 relative">
+        <NavLink to="/" className="flex items-center space-x-3">
+          <div className="h-14 w-14 md:h-16 md:w-16 relative">
             <img 
               src="/lovable-uploads/8acfad30-aa90-4edd-b779-aafd43058584.png" 
               alt="Psycotik Crew Logo" 
               className="h-full w-full object-contain" 
             />
           </div>
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-500">
+          <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-500">
             Psycotik Crew
           </span>
         </NavLink>
