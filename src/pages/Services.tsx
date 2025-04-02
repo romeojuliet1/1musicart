@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { Volume2, Lightbulb, Music2, Speaker, Mic, MonitorSpeaker, Wrench, Video, Film, MoveRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -12,16 +13,15 @@ const Services = () => {
     {
       id: "sound",
       icon: <Volume2 size={32} />,
-      title: "Sound Systems",
+      title: "Sound System",
       description: "Professional sound setups tailored to your venue and event size. From intimate gatherings to large festival spaces, we provide crystal-clear audio with expert setup and operation.",
       image: "/lovable-uploads/708f9e32-840d-46a4-aaa4-75ad2689e16f.png",
       features: [
-        "Line array speaker systems",
-        "Subwoofer configurations",
-        "Digital mixing consoles",
-        "Wireless microphone systems",
-        "Monitor speakers",
-        "Complete cabling and power management"
+        "6x Funktion One Res E4",
+        "4x Martin Audio Bass Bin 215",
+        "8x KWS Pi-Horn sub",
+        "powered by 5x Labgruppen PLM 20000Q",
+        "complete cabling and power management"
       ]
     },
     {
@@ -151,7 +151,7 @@ const Services = () => {
                 <p className="text-gray-300 mb-6">{service.description}</p>
                 
                 <div className="bg-psyco-black-light rounded-xl p-6">
-                  <h4 className="text-lg font-medium text-white mb-4">What's Included:</h4>
+                  <h4 className="text-lg font-medium text-white mb-4">{service.id === 'sound' ? 'Our Equipment:' : 'What\'s Included:'}</h4>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">

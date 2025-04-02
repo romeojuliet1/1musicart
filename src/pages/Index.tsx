@@ -14,7 +14,7 @@ const Index = () => {
 
   const featuredServices = [
     {
-      title: "Sound Systems",
+      title: "Sound System",
       description: "Professional sound systems for any size venue, from small gatherings to large festivals.",
       icon: <Volume2 size={24} />,
       imageSrc: "/lovable-uploads/708f9e32-840d-46a4-aaa4-75ad2689e16f.png",
