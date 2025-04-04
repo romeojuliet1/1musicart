@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import ServiceCard from "@/components/ServiceCard";
-import TestimonialCard from "@/components/TestimonialCard";
 import { Link } from "react-router-dom";
 import { Volume2, Music2, Lightbulb, PartyPopper, MoveRight, CalendarDays } from "lucide-react";
 
@@ -33,33 +32,6 @@ const Index = () => {
       icon: <Music2 size={24} />,
       imageSrc: "/lovable-uploads/03e83f18-76a1-4349-a197-dbde03a93343.png",
       link: "/services#dj"
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      position: "Event Coordinator",
-      company: "Eventify",
-      testimonial: "The Psycotik Crew delivered an exceptional experience for our corporate event. The sound quality was impeccable and the lighting effects created exactly the atmosphere we wanted.",
-      rating: 5,
-      imageSrc: "https://randomuser.me/api/portraits/women/32.jpg"
-    },
-    {
-      name: "Mark Williams",
-      position: "Wedding Planner",
-      company: "Perfect Day Weddings",
-      testimonial: "We've worked with many sound and light providers, but Psycotik Crew stands out for their professionalism and attention to detail. Our clients always rave about their service.",
-      rating: 5,
-      imageSrc: "https://randomuser.me/api/portraits/men/57.jpg"
-    },
-    {
-      name: "Emily Turner",
-      position: "Festival Director",
-      company: "Urban Music Festival",
-      testimonial: "For three years in a row, Psycotik Crew has been our go-to for festival sound and lighting. Their team handles everything from setup to teardown with amazing efficiency.",
-      rating: 4,
-      imageSrc: "https://randomuser.me/api/portraits/women/45.jpg"
     }
   ];
 
@@ -136,39 +108,6 @@ const Index = () => {
             >
               Book Your Event
               <MoveRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-      
-      {/* Testimonials Section */}
-      <section className="py-20 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-2">Client Testimonials</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Hear what our clients have to say about our services
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                {...testimonial}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              />
-            ))}
-          </div>
-          
-          <div className="mt-12 text-center">
-            <Link
-              to="/references"
-              className="inline-flex items-center text-psyco-green-DEFAULT hover:text-psyco-green-light transition-colors"
-            >
-              View all testimonials
-              <MoveRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
         </div>
