@@ -1,8 +1,9 @@
 
 import React, { useEffect } from "react";
 import TestimonialCard from "@/components/TestimonialCard";
-import { Star, Award, Building, Users, CheckCircle, MoveRight } from "lucide-react";
+import { Star, Award, Building, Users, CheckCircle, MoveRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 const References = () => {
   // Scroll to top on page load
@@ -111,6 +112,30 @@ const References = () => {
     }
   ];
 
+  const caseStudies = [
+    {
+      title: "Monegros Festival 2024 - Industry City PA",
+      description: "Delivered and operated a massive soundsystem setup for the Industry City stage at Monegros Festival, featuring custom stacks of speakers to handle the demanding desert conditions.",
+      image: "/lovable-uploads/b842764a-da80-4bba-a5ef-9411f04f3de6.png",
+      tags: ["Festival", "Outdoor", "High Power"],
+      readMoreLink: "#"
+    },
+    {
+      title: "Techno Revolution Club Installation",
+      description: "Designed and installed a permanent club sound system focused on precise low-end reproduction and immersive spatial audio for a premier underground venue.",
+      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80",
+      tags: ["Club", "Installation", "Custom Design"],
+      readMoreLink: "#"
+    },
+    {
+      title: "Corporate Summit 2023",
+      description: "Provided complete audio-visual solutions for a 3-day corporate event with multiple rooms requiring synchronized systems and perfect speech intelligibility.",
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80",
+      tags: ["Corporate", "Multi-Room", "Conference"],
+      readMoreLink: "#"
+    }
+  ];
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -144,6 +169,57 @@ const References = () => {
                 </div>
                 <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
                 <div className="text-gray-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Case Studies Section - NEW */}
+      <section className="py-16 px-6 md:px-12 bg-psyco-black-light">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-2">Featured Projects</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Explore some of our most impressive sound and lighting installations
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {caseStudies.map((caseStudy, index) => (
+              <div 
+                key={index} 
+                className="glassmorphism overflow-hidden rounded-xl border border-green-500/10 h-full flex flex-col animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="h-48 md:h-56 overflow-hidden relative">
+                  <img 
+                    src={caseStudy.image} 
+                    alt={caseStudy.title} 
+                    className="object-cover h-full w-full transition-transform duration-500 hover:scale-110"
+                  />
+                  <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
+                    {caseStudy.tags.map((tag, tagIndex) => (
+                      <span 
+                        key={tagIndex} 
+                        className="bg-psyco-green-DEFAULT px-3 py-1 text-xs font-medium text-white rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold text-white mb-2">{caseStudy.title}</h3>
+                  <p className="text-gray-400 mb-4 flex-grow">{caseStudy.description}</p>
+                  <a 
+                    href={caseStudy.readMoreLink} 
+                    className="inline-flex items-center text-psyco-green-DEFAULT hover:text-psyco-green-light transition-colors mt-auto"
+                  >
+                    Read more
+                    <ExternalLink className="ml-1 h-4 w-4" />
+                  </a>
+                </div>
               </div>
             ))}
           </div>
