@@ -46,12 +46,12 @@ const Navbar = () => {
           <div className="h-14 w-14 md:h-16 md:w-16 relative">
             <img 
               src="/lovable-uploads/752a1366-6aea-49ad-be21-341fe7476d14.png" 
-              alt="Psycotik Crew Logo" 
+              alt="PSK Services Logo" 
               className="h-full w-full object-contain" 
             />
           </div>
           <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-500">
-            Psycotik Crew
+            PSK Services
           </span>
         </NavLink>
 
