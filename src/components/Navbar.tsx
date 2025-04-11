@@ -42,17 +42,14 @@ const Navbar = () => {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <NavLink to="/" className="flex items-center space-x-3">
-          <div className="h-14 w-14 md:h-16 md:w-16 relative">
+        <NavLink to="/" className="flex items-center">
+          <div className="h-16 w-auto md:h-20 md:w-auto relative">
             <img 
-              src="/lovable-uploads/ef5a1f6f-4ce1-4183-9610-66d923750591.png" 
+              src="/lovable-uploads/ada582c7-709e-480e-8494-1461b602567c.png" 
               alt="PSK Services Logo" 
-              className="h-full w-full object-contain" 
+              className="h-full w-auto object-contain" 
             />
           </div>
-          <span className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-500">
-            PSK Services
-          </span>
         </NavLink>
 
         {/* Desktop Navigation */}
