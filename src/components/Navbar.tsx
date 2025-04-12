@@ -45,7 +45,7 @@ const Navbar = () => {
         <NavLink to="/" className="flex items-center">
           <div className="h-20 w-auto md:h-28 md:w-auto relative">
             <img 
-              src="/lovable-uploads/47497b1d-b110-4737-abe3-ebf01ae8c243.png" 
+              src="/lovable-uploads/5964f950-36a7-430c-a887-4eea91ad4973.png" 
               alt="PSK Services Logo" 
               className="h-full w-auto object-contain" 
             />
