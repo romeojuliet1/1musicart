@@ -90,9 +90,36 @@ const getBlogPostById = (id: string) => {
       relatedPosts: ["1", "4", "6"]
     },
     // Placeholder for other blog posts - these would be filled in when creating those specific posts
-    "1": { title: "How to Choose the Right Sound System for Your Event" },
-    "4": { title: "Setting Up the Perfect Festival Sound" },
-    "6": { title: "The Technical Rider: What Event Organizers Need to Know" }
+    "1": { 
+      title: "How to Choose the Right Sound System for Your Event",
+      date: "January 15, 2023",
+      readTime: "5 min read",
+      author: "Technical Crew",
+      category: "Sound",
+      imageSrc: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&q=80",
+      content: [],
+      relatedPosts: []
+    },
+    "4": { 
+      title: "Setting Up the Perfect Festival Sound",
+      date: "April 5, 2023",
+      readTime: "8 min read",
+      author: "Alex Thompson",
+      category: "Sound",
+      imageSrc: "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&q=80",
+      content: [],
+      relatedPosts: []
+    },
+    "6": { 
+      title: "The Technical Rider: What Event Organizers Need to Know",
+      date: "June 30, 2023",
+      readTime: "9 min read",
+      author: "Michael Stevens",
+      category: "Technical",
+      imageSrc: "https://images.unsplash.com/photo-1608749333098-a1783ca4b4bf?auto=format&fit=crop&q=80",
+      content: [],
+      relatedPosts: []
+    }
   };
   
   return blogPosts[id as keyof typeof blogPosts];
