@@ -14,14 +14,14 @@ const Blog = () => {
   
   const blogPosts = [
     {
-      id: "1",
-      title: "How to Choose the Right Sound System for Your Event",
-      excerpt: "Selecting the perfect sound system can make or break your event. In this guide, we'll walk you through the key considerations for venues of different sizes.",
-      date: "January 15, 2023",
-      readTime: "5 min read",
-      author: "Alex Thompson",
+      id: "tentacular-urutz",
+      title: "PA Rental & Live Sets on Tentacular Urutz Party, Italy",
+      excerpt: "Our team provided a custom sound system and technical support for the underground psychedelic trance event in Italy, featuring our signature horn-loaded setup.",
+      date: "April 8, 2023",
+      readTime: "6 min read",
+      author: "Technical Crew",
       category: "Sound",
-      imageSrc: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&q=80&w=2070",
+      imageSrc: "/lovable-uploads/8dced82a-6a2c-48ee-a060-463c28764183.png",
       featured: true
     },
     {
