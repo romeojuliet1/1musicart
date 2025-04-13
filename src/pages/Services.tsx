@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Volume2, Lightbulb, Music2, Speaker, Mic, MonitorSpeaker, Wrench, Video, Film, MoveRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -29,7 +28,7 @@ const Services = () => {
       icon: <Lightbulb size={32} />,
       title: "Lighting Equipment",
       description: "Create the perfect atmosphere with our state-of-the-art lighting equipment. From subtle ambient lighting to dynamic stage shows, we design and operate custom lighting solutions.",
-      image: "/lovable-uploads/ef5a1f6f-4ce1-4183-9610-66d923750591.png",
+      image: "/lovable-uploads/becfc2e3-b59f-4f86-afca-b9f6fc7b7c14.png",
       features: [
         "Moving head fixtures",
         "LED wash lights",

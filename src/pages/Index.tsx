@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import ServiceCard from "@/components/ServiceCard";
@@ -23,7 +22,7 @@ const Index = () => {
       title: "Lighting Equipment",
       description: "Create the perfect atmosphere with our state-of-the-art lighting equipment and expert setup.",
       icon: <Lightbulb size={24} />,
-      imageSrc: "/lovable-uploads/ef5a1f6f-4ce1-4183-9610-66d923750591.png",
+      imageSrc: "/lovable-uploads/becfc2e3-b59f-4f86-afca-b9f6fc7b7c14.png",
       link: "/services#lighting"
     },
     {
