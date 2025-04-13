@@ -29,7 +29,7 @@ const Services = () => {
       icon: <Lightbulb size={32} />,
       title: "Lighting Equipment",
       description: "Create the perfect atmosphere with our state-of-the-art lighting equipment. From subtle ambient lighting to dynamic stage shows, we design and operate custom lighting solutions.",
-      image: "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80",
+      image: "/lovable-uploads/ef5a1f6f-4ce1-4183-9610-66d923750591.png",
       features: [
         "Moving head fixtures",
         "LED wash lights",

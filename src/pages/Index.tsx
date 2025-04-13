@@ -23,7 +23,7 @@ const Index = () => {
       title: "Lighting Equipment",
       description: "Create the perfect atmosphere with our state-of-the-art lighting equipment and expert setup.",
       icon: <Lightbulb size={24} />,
-      imageSrc: "https://images.unsplash.com/photo-1551696785-927d4ac2d35b?auto=format&fit=crop&q=80",
+      imageSrc: "/lovable-uploads/ef5a1f6f-4ce1-4183-9610-66d923750591.png",
       link: "/services#lighting"
     },
     {
