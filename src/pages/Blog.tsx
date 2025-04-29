@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import BlogPost from "@/components/BlogPost";
 import { Search } from "lucide-react";
