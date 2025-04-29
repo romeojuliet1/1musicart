@@ -6,123 +6,99 @@ import { cn } from "@/lib/utils";
 
 const getBlogPostById = (id: string) => {
   const blogPosts = {
-    "tentacular-urutz": {
-      title: "PA Rental & Live Sets on Tentacular Urutz Party, Italy",
-      date: "April 8, 2023",
-      readTime: "6 min read",
-      author: "Technical Crew",
-      category: "Sound",
-      imageSrc: "/lovable-uploads/8dced82a-6a2c-48ee-a060-463c28764183.png",
-      content: [
-        {
-          type: "paragraph",
-          text: "Our team recently had the pleasure of providing sound reinforcement services for the Tentacular Urutz Party, an underground psychedelic trance event held in Italy. This project showcased our custom-built horn-loaded sound system, specifically designed for electronic music events that demand exceptional low-frequency performance and crystal-clear highs."
-        },
-        {
-          type: "heading",
-          text: "The Sound System Setup"
-        },
-        {
-          type: "paragraph",
-          text: "For this event, we deployed our signature horn-loaded sound system featuring custom-designed speaker cabinets. The main stack included:"
-        },
-        {
-          type: "list",
-          items: [
-            "4 x Horn-loaded mid-high cabinets with compression drivers",
-            "2 x Horn-loaded low-mid cabinets",
-            "4 x Folded horn subwoofers for extreme low-frequency response",
-            "Professional-grade amplification with digital signal processing",
-            "Complete DJ and live performer audio interface setup"
-          ]
-        },
-        {
-          type: "paragraph",
-          text: "The horn-loaded design offers several advantages for psychedelic trance events, including greater efficiency, better directivity control, and reduced power requirements compared to conventional speaker designs. This results in cleaner sound at high volumes with minimal distortion."
-        },
-        {
-          type: "heading",
-          text: "Technical Challenges and Solutions"
-        },
-        {
-          type: "paragraph",
-          text: "The venue presented several acoustic challenges, including a relatively low ceiling height and parallel reflective surfaces. Our team addressed these issues by:"
-        },
-        {
-          type: "list",
-          items: [
-            "Carefully positioning the speakers to minimize unwanted reflections",
-            "Implementing precise time alignment between all components",
-            "Applying targeted equalization to compensate for room modes",
-            "Using strategic acoustic treatment at critical reflection points"
-          ]
-        },
-        {
-          type: "paragraph",
-          text: "The end result was a sound system that delivered exceptional clarity and impact, with the characteristic psychedelic trance sound that combines punchy, articulate bass with detailed highs that don't fatigue the ears even during long sessions."
-        },
-        {
-          type: "heading",
-          text: "Live Performance Support"
-        },
-        {
-          type: "paragraph",
-          text: "Beyond providing the sound system, our team also supported several live acts during the event. This included setting up monitoring solutions for performers, managing complex audio routing for hybrid DJ/live setups, and ensuring seamless transitions between acts."
-        },
-        {
-          type: "paragraph",
-          text: "The visual aesthetic of the sound system, featuring the distinctive artwork visible in the image, complemented the event's visual design and contributed to the immersive atmosphere that made the Tentacular Urutz Party a standout success."
-        },
-        {
-          type: "heading",
-          text: "Client Feedback"
-        },
-        {
-          type: "quote",
-          text: "The sound quality at our event exceeded our expectations. The system had incredible presence and depth while maintaining perfect clarity. Even at high volume levels, the sound remained comfortable and engaging. Many attendees commented specifically on the audio quality, which is rare and speaks to the exceptional work done by the technical team.",
-          author: "Event Organizer, Tentacular Urutz"
-        },
-        {
-          type: "paragraph",
-          text: "We're proud to have contributed to the success of this event and look forward to supporting more underground electronic music events across Europe. If you're planning a similar event and require a sound system that goes beyond conventional rental options, contact us to discuss how we can help create an unforgettable sonic experience for your audience."
-        }
-      ],
-      relatedPosts: ["1", "4", "6"]
-    },
-    // Placeholder for other blog posts - these would be filled in when creating those specific posts
-    "1": { 
-      title: "How to Choose the Right Sound System for Your Event",
-      date: "January 15, 2023",
-      readTime: "5 min read",
-      author: "Technical Crew",
-      category: "Sound",
-      imageSrc: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&q=80",
-      content: [],
-      relatedPosts: []
-    },
-    "4": { 
-      title: "Setting Up the Perfect Festival Sound",
-      date: "April 5, 2023",
-      readTime: "8 min read",
-      author: "Alex Thompson",
-      category: "Sound",
-      imageSrc: "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&q=80",
-      content: [],
-      relatedPosts: []
-    },
-    "6": { 
+    "6": {
       title: "The Technical Rider: What Event Organizers Need to Know",
       date: "June 30, 2023",
       readTime: "9 min read",
       author: "Michael Stevens",
       category: "Technical",
       imageSrc: "https://images.unsplash.com/photo-1608749333098-a1783ca4b4bf?auto=format&fit=crop&q=80",
-      content: [],
+      content: [
+        {
+          type: "paragraph",
+          text: "A technical rider is one of the most important documents in event production, yet it's often misunderstood or overlooked by new event organizers. This document outlines the technical requirements that performers need to deliver their show successfully."
+        },
+        {
+          type: "heading",
+          text: "What is a Technical Rider?"
+        },
+        {
+          type: "paragraph",
+          text: "A technical rider is essentially a set of requirements and specifications that performers provide to venue operators and event organizers. It details everything from the audio equipment needed to stage dimensions, lighting requirements, and power specifications."
+        },
+        {
+          type: "heading",
+          text: "Key Components of a Technical Rider"
+        },
+        {
+          type: "list",
+          items: [
+            "Audio requirements: Microphones, monitors, mixing console specifications",
+            "Lighting needs: Types of fixtures, control systems, special effects",
+            "Stage requirements: Dimensions, layout, backstage access",
+            "Power specifications: Voltage requirements, number of circuits needed",
+            "Staff requirements: Sound engineers, lighting technicians, stage hands",
+            "Schedule information: Load-in, soundcheck, and performance times"
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "Understanding and fulfilling these requirements is crucial for the success of any event. Without proper technical support, even the most talented performers cannot deliver their best show."
+        },
+        {
+          type: "heading",
+          text: "Common Challenges and Solutions"
+        },
+        {
+          type: "paragraph",
+          text: "Many venues struggle with accommodating every aspect of a technical rider. Here are some common challenges and practical solutions:"
+        },
+        {
+          type: "list",
+          items: [
+            "Equipment limitations: Rent additional gear or negotiate alternatives with the performer",
+            "Space constraints: Optimize the layout or consider a different venue if requirements are inflexible",
+            "Budget restrictions: Prioritize essential requirements and discuss alternatives for non-critical items",
+            "Technical expertise: Hire specialized staff for the event or invest in training your team"
+          ]
+        },
+        {
+          type: "heading",
+          text: "Preparing Your Venue for Technical Riders"
+        },
+        {
+          type: "paragraph",
+          text: "If you manage a venue or frequently organize events, there are several steps you can take to better accommodate technical riders:"
+        },
+        {
+          type: "list",
+          items: [
+            "Maintain an updated inventory of available equipment",
+            "Create detailed venue specifications sheets including dimensions, power capabilities, and existing audio/visual infrastructure",
+            "Establish relationships with rental companies for specialized equipment",
+            "Build a network of qualified technicians who can be called on for specific events",
+            "Develop a standardized process for reviewing and responding to technical riders"
+          ]
+        },
+        {
+          type: "paragraph",
+          text: "By taking a proactive approach to technical riders, you can ensure smoother events with fewer last-minute complications."
+        },
+        {
+          type: "quote",
+          text: "A well-prepared venue that can accommodate technical riders without friction is worth its weight in gold. Artists remember the venues where they had a great experience, and they'll want to return.",
+          author: "Concert Production Manager"
+        },
+        {
+          type: "paragraph",
+          text: "Whether you're an event organizer, venue manager, or performer, understanding the importance of the technical rider is essential for successful events. Taking the time to properly address technical requirements will result in better performances, happier artists, and more satisfied audiences."
+        }
+      ],
       relatedPosts: []
     }
   };
   
-  return blogPosts[id as keyof typeof blogPosts];
+  return blogPosts[id as keyof typeof blogPosts] || null;
 };
 
 const BlogDetail = () => {
@@ -235,31 +211,6 @@ const BlogDetail = () => {
             </div>
           </div>
         </div>
-        
-        {/* Related posts */}
-        {post.relatedPosts && post.relatedPosts.length > 0 && (
-          <div className="mt-16">
-            <h3 className="text-xl font-bold text-white mb-6">Related Articles</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {post.relatedPosts.map((relatedId) => {
-                const relatedPost = getBlogPostById(relatedId);
-                if (!relatedPost) return null;
-                
-                return (
-                  <div key={relatedId} className="glassmorphism overflow-hidden card-hover">
-                    <Link to={`/blog/${relatedId}`} className="block">
-                      <div className="p-6">
-                        <h4 className="text-lg font-medium text-white mb-2 hover:text-psyco-green-light transition-colors">
-                          {relatedPost.title}
-                        </h4>
-                      </div>
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
       </article>
     </div>
   );
