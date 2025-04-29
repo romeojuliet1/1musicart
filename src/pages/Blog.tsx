@@ -14,20 +14,20 @@ const Blog = () => {
   
   const blogPosts = [
     {
-      id: "6",
-      title: "The Technical Rider: What Event Organizers Need to Know",
-      excerpt: "Understanding the technical requirements for performers and how to prepare your venue to meet these specifications.",
-      date: "June 30, 2023",
-      readTime: "9 min read",
-      author: "Michael Stevens",
-      category: "Technical",
-      imageSrc: "https://images.unsplash.com/photo-1608749333098-a1783ca4b4bf?auto=format&fit=crop&q=80"
+      id: "7",
+      title: "Professional PA System Rental in Italy: What You Need to Know",
+      excerpt: "Looking for high-quality sound equipment for your event in Italy? Learn about our professional PA rental services, pricing, and how to choose the right setup for your needs.",
+      date: "April 25, 2023",
+      readTime: "7 min read",
+      author: "Elena Romano",
+      category: "Equipment Rental",
+      imageSrc: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80"
     }
   ];
   
   const categories = [
     "All",
-    "Technical"
+    "Equipment Rental"
   ];
   
   const [activeCategory, setActiveCategory] = useState("All");

@@ -1,97 +1,121 @@
 
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Calendar, Clock, User, Tag, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const getBlogPostById = (id: string) => {
   const blogPosts = {
-    "6": {
-      title: "The Technical Rider: What Event Organizers Need to Know",
-      date: "June 30, 2023",
-      readTime: "9 min read",
-      author: "Michael Stevens",
-      category: "Technical",
-      imageSrc: "https://images.unsplash.com/photo-1608749333098-a1783ca4b4bf?auto=format&fit=crop&q=80",
+    "7": {
+      title: "Professional PA System Rental in Italy: What You Need to Know",
+      date: "April 25, 2023",
+      readTime: "7 min read",
+      author: "Elena Romano",
+      category: "Equipment Rental",
+      imageSrc: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80",
       content: [
         {
           type: "paragraph",
-          text: "A technical rider is one of the most important documents in event production, yet it's often misunderstood or overlooked by new event organizers. This document outlines the technical requirements that performers need to deliver their show successfully."
+          text: "When organizing an event in Italy that requires high-quality sound, renting a professional PA system is often more practical and cost-effective than purchasing equipment. Whether you're planning a corporate conference, a wedding reception, or a musical performance, having the right sound equipment is crucial for your event's success."
         },
         {
           type: "heading",
-          text: "What is a Technical Rider?"
+          text: "Types of PA Systems Available in Italy"
         },
         {
           type: "paragraph",
-          text: "A technical rider is essentially a set of requirements and specifications that performers provide to venue operators and event organizers. It details everything from the audio equipment needed to stage dimensions, lighting requirements, and power specifications."
-        },
-        {
-          type: "heading",
-          text: "Key Components of a Technical Rider"
+          text: "Italy offers a range of PA rental options to suit different event needs. These typically include:"
         },
         {
           type: "list",
           items: [
-            "Audio requirements: Microphones, monitors, mixing console specifications",
-            "Lighting needs: Types of fixtures, control systems, special effects",
-            "Stage requirements: Dimensions, layout, backstage access",
-            "Power specifications: Voltage requirements, number of circuits needed",
-            "Staff requirements: Sound engineers, lighting technicians, stage hands",
-            "Schedule information: Load-in, soundcheck, and performance times"
-          ]
-        },
-        {
-          type: "paragraph",
-          text: "Understanding and fulfilling these requirements is crucial for the success of any event. Without proper technical support, even the most talented performers cannot deliver their best show."
-        },
-        {
-          type: "heading",
-          text: "Common Challenges and Solutions"
-        },
-        {
-          type: "paragraph",
-          text: "Many venues struggle with accommodating every aspect of a technical rider. Here are some common challenges and practical solutions:"
-        },
-        {
-          type: "list",
-          items: [
-            "Equipment limitations: Rent additional gear or negotiate alternatives with the performer",
-            "Space constraints: Optimize the layout or consider a different venue if requirements are inflexible",
-            "Budget restrictions: Prioritize essential requirements and discuss alternatives for non-critical items",
-            "Technical expertise: Hire specialized staff for the event or invest in training your team"
+            "Small portable systems (suitable for presentations and small gatherings up to 50 people)",
+            "Medium-sized systems (ideal for corporate events and small concerts of 50-200 people)",
+            "Large line array systems (perfect for concerts and large-scale events of 200+ attendees)",
+            "Complete DJ setups with mixing consoles and monitors",
+            "Specialized systems for theater productions and conferences"
           ]
         },
         {
           type: "heading",
-          text: "Preparing Your Venue for Technical Riders"
+          text: "Factors to Consider When Renting a PA System"
         },
         {
           type: "paragraph",
-          text: "If you manage a venue or frequently organize events, there are several steps you can take to better accommodate technical riders:"
+          text: "Before renting sound equipment in Italy, consider these important factors to ensure you get the right setup for your event:"
         },
         {
           type: "list",
           items: [
-            "Maintain an updated inventory of available equipment",
-            "Create detailed venue specifications sheets including dimensions, power capabilities, and existing audio/visual infrastructure",
-            "Establish relationships with rental companies for specialized equipment",
-            "Build a network of qualified technicians who can be called on for specific events",
-            "Develop a standardized process for reviewing and responding to technical riders"
+            "Venue size and acoustics: Different venues require different types and power levels of sound systems",
+            "Indoor vs. outdoor events: Outdoor events generally need more powerful systems and weather protection",
+            "Type of event: Music performances need different equipment than speeches or presentations",
+            "Technical support: Determine whether you need technicians to set up and operate the equipment",
+            "Rental duration: Most companies offer better rates for multi-day rentals",
+            "Power requirements: Ensure your venue can support the electrical needs of the system"
+          ]
+        },
+        {
+          type: "heading",
+          text: "Average Costs for PA Rental in Italy"
+        },
+        {
+          type: "paragraph",
+          text: "PA system rental costs in Italy vary based on equipment quality, size, and whether technical support is included. Here's a general pricing overview:"
+        },
+        {
+          type: "list",
+          items: [
+            "Small PA systems: €150-300 per day",
+            "Medium PA systems: €350-700 per day",
+            "Large concert-grade systems: €800-2,000+ per day",
+            "Sound technician services: €200-400 per day additional",
+            "Transport, setup, and teardown: Often charged separately at €100-300 depending on distance and complexity"
           ]
         },
         {
           type: "paragraph",
-          text: "By taking a proactive approach to technical riders, you can ensure smoother events with fewer last-minute complications."
+          text: "Many rental companies offer package deals for multiple days or when combining different types of equipment, which can significantly reduce the overall cost."
+        },
+        {
+          type: "heading",
+          text: "Booking Process and Timeline"
+        },
+        {
+          type: "paragraph",
+          text: "For the best experience when renting PA equipment in Italy, follow these recommended steps:"
+        },
+        {
+          type: "list",
+          items: [
+            "Book 1-3 months in advance for large events, especially during the busy summer season",
+            "Request detailed quotes from multiple rental companies",
+            "Arrange a site visit with the rental company if possible",
+            "Confirm power and space requirements with your venue",
+            "Schedule delivery and setup at least several hours before your event begins",
+            "Consider insurance for expensive equipment rentals"
+          ]
         },
         {
           type: "quote",
-          text: "A well-prepared venue that can accommodate technical riders without friction is worth its weight in gold. Artists remember the venues where they had a great experience, and they'll want to return.",
-          author: "Concert Production Manager"
+          text: "Always test all equipment thoroughly during setup. It's much easier to fix issues before your guests arrive than during your event.",
+          author: "Event Production Manager"
+        },
+        {
+          type: "heading",
+          text: "Leading PA Rental Companies in Italy"
         },
         {
           type: "paragraph",
-          text: "Whether you're an event organizer, venue manager, or performer, understanding the importance of the technical rider is essential for successful events. Taking the time to properly address technical requirements will result in better performances, happier artists, and more satisfied audiences."
+          text: "Italy has several reputable companies specializing in professional audio equipment rental. Most major cities like Rome, Milan, Florence, and Naples have local providers with high-quality inventory. The best companies offer comprehensive services including delivery, setup, technical support, and pickup."
+        },
+        {
+          type: "paragraph",
+          text: "When selecting a rental company, check their reviews, ask for references, and inquire about their backup equipment policies in case of technical failures."
+        },
+        {
+          type: "paragraph",
+          text: "With proper planning and the right equipment partner, renting a PA system in Italy can be a seamless process that ensures your event sounds as good as it looks."
         }
       ],
       relatedPosts: []
