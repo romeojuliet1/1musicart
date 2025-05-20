@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from 'lucide-react';
+import { Mail, Facebook, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -35,7 +35,7 @@ const Footer = () => {
                 <Instagram size={20} />
               </a>
               <a 
-                href="https://facebook.com" 
+                href="https://facebook.com/psicptyk.free" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-green-400 transition-colors"
@@ -109,16 +109,19 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-center space-x-3 text-gray-300">
-                <Phone size={16} className="text-green-500" />
-                <span>+44 123 456 7890</span>
+                <Mail size={16} className="text-green-500" />
+                <span>psk-services@gmail.com</span>
               </li>
               <li className="flex items-center space-x-3 text-gray-300">
-                <Mail size={16} className="text-green-500" />
-                <span>info@psycotikcrew.com</span>
-              </li>
-              <li className="flex items-start space-x-3 text-gray-300">
-                <MapPin size={16} className="text-green-500 mt-1" />
-                <span>123 Sound Avenue, London, UK</span>
+                <Facebook size={16} className="text-green-500" />
+                <a 
+                  href="https://www.facebook.com/psicptyk.free" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-green-400 transition-colors"
+                >
+                  facebook.com/psicptyk.free
+                </a>
               </li>
             </ul>
           </div>
