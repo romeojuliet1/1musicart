@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -27,11 +27,12 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'References', path: '/references' },
-    { name: 'Booking', path: '/booking' },
+    { name: 'خانه', path: '/' },
+    { name: 'موسیقی', path: '/browse' },
+    { name: 'هنرمندان', path: '/artists' },
+    { name: 'آلبوم‌ها', path: '/albums' },
+    { name: 'ویدیوها', path: '/videos' },
+    { name: 'وبلاگ', path: '/blog' },
   ];
 
   return (
@@ -46,7 +47,7 @@ const Navbar = () => {
           <div className="h-20 w-auto md:h-28 md:w-auto relative">
             <img 
               src="/lovable-uploads/5964f950-36a7-430c-a887-4eea91ad4973.png" 
-              alt="PSK Services Logo" 
+              alt="Persian Music Logo" 
               className="h-full w-auto object-contain" 
             />
           </div>
@@ -68,6 +69,11 @@ const Navbar = () => {
               {link.name}
             </NavLink>
           ))}
+          
+          {/* Search icon in navbar */}
+          <button className="text-white hover:text-green-400 transition-colors">
+            <Search size={20} />
+          </button>
         </div>
 
         {/* Mobile Navigation Toggle */}
