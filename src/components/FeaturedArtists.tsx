@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Users, Music, Play, UserPlus } from 'lucide-react';
 
 interface Artist {
@@ -70,9 +71,10 @@ const FeaturedArtists = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {artists.map((artist, index) => (
-            <div
+            <Link
               key={artist.id}
-              className="glassmorphism p-6 rounded-xl card-hover animate-fade-in group text-center"
+              to={`/artist/${artist.id}`}
+              className="glassmorphism p-6 rounded-xl card-hover animate-fade-in group text-center block"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="relative mb-4">
@@ -113,13 +115,19 @@ const FeaturedArtists = () => {
                 </div>
 
                 <div className="pt-4">
-                  <button className="w-full bg-transparent border border-psyco-green-DEFAULT text-psyco-green-DEFAULT hover:bg-psyco-green-DEFAULT hover:text-white py-2 px-4 rounded-full text-sm font-medium transition-all flex items-center justify-center">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    className="w-full bg-transparent border border-psyco-green-DEFAULT text-psyco-green-DEFAULT hover:bg-psyco-green-DEFAULT hover:text-white py-2 px-4 rounded-full text-sm font-medium transition-all flex items-center justify-center"
+                  >
                     <UserPlus size={16} className="mr-2" />
                     دنبال کنید
                   </button>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

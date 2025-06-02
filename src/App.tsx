@@ -10,6 +10,7 @@ import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import References from "./pages/References";
 import Booking from "./pages/Booking";
+import ArtistProfile from "./pages/ArtistProfile";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/references" element={<References />} />
             <Route path="/booking" element={<Booking />} />
+            <Route path="/artist/:id" element={<ArtistProfile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

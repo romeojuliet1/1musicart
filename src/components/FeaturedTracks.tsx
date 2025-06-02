@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Play, Heart, ShoppingCart, MoreHorizontal } from 'lucide-react';
+import DonationModal from './DonationModal';
 
 interface Track {
   id: string;
@@ -17,6 +18,9 @@ interface FeaturedTracksProps {
 }
 
 const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
+  const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+  const [showDonationModal, setShowDonationModal] = useState(false);
+
   const tracks: Track[] = [
     {
       id: '1',
@@ -55,6 +59,43 @@ const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
       genre: 'سنتی'
     }
   ];
+
+  // Mock artist data for donation
+  const mockArtist = {
+    id: '1',
+    name: 'احسان خواجه امیری',
+    email: 'ehsan@example.com',
+    avatar: '/lovable-uploads/03e83f18-76a1-4349-a197-dbde03a93343.png',
+    userType: 'artist' as const,
+    isVerified: true,
+    bio: 'خواننده و آهنگساز پاپ ایرانی',
+    joinDate: new Date('2020-01-15'),
+    genres: ['پاپ', 'راک'],
+    albums: 5,
+    singles: 23,
+    videos: 12,
+    followers: 125000,
+    totalSales: 50000,
+    activeDaysThisWeek: 5,
+    lastActiveDate: new Date(),
+    stats: {
+      albumsPurchased: 0,
+      singlesPurchased: 0,
+      videosPurchased: 0,
+      totalSpent: 0,
+      donationsGiven: 0
+    }
+  };
+
+  const handlePurchaseWithDonation = (track: Track) => {
+    setSelectedTrack(track);
+    setShowDonationModal(true);
+  };
+
+  const handleDonate = (amount: number, message?: string) => {
+    console.log(`Donated $${amount} for track ${selectedTrack?.title}`, { message });
+    // اینجا منطق پردازش پرداخت و donation قرار می‌گیرد
+  };
 
   return (
     <section className="py-16 px-6 md:px-12 bg-psyco-black-light">
@@ -112,7 +153,10 @@ const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
                       <MoreHorizontal size={18} />
                     </button>
                   </div>
-                  <button className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white px-3 py-1 rounded-full text-xs font-medium transition-colors flex items-center">
+                  <button
+                    onClick={() => handlePurchaseWithDonation(track)}
+                    className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white px-3 py-1 rounded-full text-xs font-medium transition-colors flex items-center"
+                  >
                     <ShoppingCart size={14} className="mr-1" />
                     خرید
                   </button>
@@ -122,6 +166,16 @@ const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
           ))}
         </div>
       </div>
+
+      {selectedTrack && (
+        <DonationModal
+          artist={mockArtist}
+          basePrice={selectedTrack.price}
+          isOpen={showDonationModal}
+          onClose={() => setShowDonationModal(false)}
+          onDonate={handleDonate}
+        />
+      )}
     </section>
   );
 };
