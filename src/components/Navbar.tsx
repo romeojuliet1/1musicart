@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X, Search, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -28,11 +28,11 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'خانه', path: '/' },
-    { name: 'موسیقی', path: '/browse' },
+    { name: 'فروشگاه', path: '/shop' },
     { name: 'هنرمندان', path: '/artists' },
-    { name: 'آلبوم‌ها', path: '/albums' },
-    { name: 'ویدیوها', path: '/videos' },
     { name: 'وبلاگ', path: '/blog' },
+    { name: 'درباره ما', path: '/references' },
+    { name: 'تماس', path: '/booking' },
   ];
 
   return (
@@ -70,10 +70,18 @@ const Navbar = () => {
             </NavLink>
           ))}
           
-          {/* Search icon in navbar */}
-          <button className="text-white hover:text-green-400 transition-colors">
-            <Search size={20} />
-          </button>
+          {/* User Dashboard and Search */}
+          <div className="flex items-center space-x-4">
+            <button className="text-white hover:text-green-400 transition-colors">
+              <Search size={20} />
+            </button>
+            <NavLink 
+              to="/dashboard"
+              className="text-white hover:text-green-400 transition-colors"
+            >
+              <User size={20} />
+            </NavLink>
+          </div>
         </div>
 
         {/* Mobile Navigation Toggle */}
@@ -107,6 +115,12 @@ const Navbar = () => {
               {link.name}
             </NavLink>
           ))}
+          <NavLink
+            to="/dashboard"
+            className="text-white hover:text-green-400 py-2 text-xl transition-colors duration-300"
+          >
+            داشبورد
+          </NavLink>
         </div>
       </div>
     </nav>
