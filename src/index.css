@@ -55,7 +55,8 @@
 
 @layer components {
   .glassmorphism {
-    @apply backdrop-blur-xl bg-gradient-to-br from-psyco-black-card to-psyco-black-light/50;
+    @apply backdrop-blur-xl bg-gradient-to-br;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(26, 26, 26, 0.5) 100%);
     border: 1px solid rgba(0, 217, 163, 0.2);
     box-shadow: 
       0 8px 32px rgba(0, 0, 0, 0.3),
@@ -79,11 +80,14 @@
   }
   
   .btn-glow::before {
-    @apply content-[''] absolute inset-0 bg-shimmer bg-[length:200%_100%] opacity-0 transition-opacity duration-500;
+    @apply content-[''] absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background-size: 200% 100%;
   }
   
   .btn-glow:hover::before {
-    @apply opacity-100 animate-shimmer;
+    @apply opacity-100;
+    animation: shimmer 2s infinite linear;
   }
   
   .text-glow {
@@ -99,7 +103,8 @@
   }
   
   .link-hover::after {
-    @apply content-[''] absolute bottom-0 left-0 h-0.5 w-0 bg-psyco-green-DEFAULT transition-all duration-300;
+    @apply content-[''] absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300;
+    background-color: #00D9A3;
   }
   
   .link-hover:hover::after {
@@ -107,7 +112,10 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #00D9A3 0%, #8B5CF6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .floating-card {
@@ -115,7 +123,8 @@
   }
 
   .floating-card::before {
-    @apply content-[''] absolute -inset-1 bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT rounded-xl opacity-0 transition-opacity duration-500 blur-sm;
+    @apply content-[''] absolute -inset-1 rounded-xl opacity-0 transition-opacity duration-500 blur-sm;
+    background: linear-gradient(135deg, #00D9A3 0%, #8B5CF6 100%);
   }
 
   .floating-card:hover::before {
@@ -134,22 +143,26 @@
 }
 
 .calendar-container .react-calendar {
-  @apply glassmorphism border-psyco-green-DEFAULT/20 p-4;
+  @apply glassmorphism p-4;
+  border: 1px solid rgba(0, 217, 163, 0.2);
 }
 
 .calendar-container .react-calendar__tile--active {
-  @apply bg-psyco-green-DEFAULT text-white;
+  background-color: #00D9A3;
+  color: white;
 }
 
 .calendar-container .react-calendar__tile--now {
-  @apply bg-psyco-green-DEFAULT/20 text-psyco-green-DEFAULT;
+  background-color: rgba(0, 217, 163, 0.2);
+  color: #00D9A3;
 }
 
 .calendar-container .react-calendar__navigation button:enabled:hover,
 .calendar-container .react-calendar__navigation button:enabled:focus,
 .calendar-container .react-calendar__tile:enabled:hover,
 .calendar-container .react-calendar__tile:enabled:focus {
-  @apply bg-psyco-green-DEFAULT/20 text-white;
+  background-color: rgba(0, 217, 163, 0.2);
+  color: white;
 }
 
 /* Enhanced scrollbar */
@@ -159,23 +172,25 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-psyco-black-DEFAULT;
+  background-color: #0A0A0A;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-psyco-green-DEFAULT to-psyco-purple-DEFAULT rounded-full;
+  background: linear-gradient(135deg, #00D9A3 0%, #8B5CF6 100%);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply shadow-lg;
   box-shadow: 0 0 10px rgba(0, 217, 163, 0.5);
 }
 
 /* Selection styles */
 ::selection {
-  @apply bg-psyco-green-DEFAULT/30 text-white;
+  background-color: rgba(0, 217, 163, 0.3);
+  color: white;
 }
 
 ::-moz-selection {
-  @apply bg-psyco-green-DEFAULT/30 text-white;
+  background-color: rgba(0, 217, 163, 0.3);
+  color: white;
 }
