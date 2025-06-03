@@ -60,11 +60,11 @@ const FeaturedArtists = () => {
   };
 
   return (
-    <section className="py-16 px-6 md:px-12 bg-psyco-black-light">
+    <section className="section-padding bg-gradient-to-b from-psyco-black-DEFAULT to-psyco-black-light">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">هنرمندان برجسته</h2>
-          <button className="text-psyco-green-DEFAULT hover:text-psyco-green-light transition-colors">
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold gradient-text">هنرمندان برجسته</h2>
+          <button className="text-psyco-green-DEFAULT hover:text-psyco-green-light transition-all duration-300 link-hover font-medium">
             مشاهده همه
           </button>
         </div>
@@ -74,43 +74,46 @@ const FeaturedArtists = () => {
             <Link
               key={artist.id}
               to={`/artist/${artist.id}`}
-              className="glassmorphism p-6 rounded-xl card-hover animate-fade-in group text-center block"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="floating-card glassmorphism p-6 rounded-2xl card-hover animate-fade-in group text-center block relative overflow-hidden"
+              style={{ animationDelay: `${index * 120}ms` }}
             >
-              <div className="relative mb-4">
-                <img
-                  src={artist.avatar}
-                  alt={artist.name}
-                  className="w-24 h-24 mx-auto rounded-full object-cover border-2 border-psyco-green-DEFAULT/20 group-hover:border-psyco-green-DEFAULT transition-colors"
-                />
+              <div className="relative mb-6">
+                <div className="relative mx-auto w-24 h-24 rounded-full overflow-hidden">
+                  <img
+                    src={artist.avatar}
+                    alt={artist.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-psyco-green-DEFAULT/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
                 {artist.verified && (
-                  <div className="absolute -top-1 -right-1 bg-psyco-green-DEFAULT text-white rounded-full p-1">
+                  <div className="absolute top-0 right-0 bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT text-white rounded-full p-1 shadow-lg">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                   </div>
                 )}
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-full flex items-center justify-center">
-                  <button className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white rounded-full p-2 transition-all">
+                  <button className="bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT hover:from-psyco-green-dark hover:to-psyco-purple-dark text-white rounded-full p-2 transition-all duration-300 btn-glow shadow-lg transform hover:scale-110">
                     <Play size={20} />
                   </button>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="text-lg font-bold text-white group-hover:text-psyco-green-DEFAULT transition-colors">
+              <div className="space-y-3">
+                <h3 className="text-lg font-bold text-white group-hover:text-glow transition-all duration-300">
                   {artist.name}
                 </h3>
-                <p className="text-psyco-green-DEFAULT text-sm font-medium">{artist.genre}</p>
+                <p className="gradient-text text-sm font-medium">{artist.genre}</p>
                 
-                <div className="flex justify-center space-x-4 text-xs text-gray-400">
+                <div className="flex justify-center space-x-4 text-xs text-psyco-gray-DEFAULT">
                   <div className="flex items-center">
-                    <Users size={14} className="mr-1" />
-                    <span>{formatFollowers(artist.followers)}</span>
+                    <Users size={14} className="mr-1 text-psyco-green-DEFAULT" />
+                    <span className="font-medium">{formatFollowers(artist.followers)}</span>
                   </div>
                   <div className="flex items-center">
-                    <Music size={14} className="mr-1" />
-                    <span>{artist.trackCount} ترک</span>
+                    <Music size={14} className="mr-1 text-psyco-purple-DEFAULT" />
+                    <span className="font-medium">{artist.trackCount} ترک</span>
                   </div>
                 </div>
 
@@ -120,7 +123,7 @@ const FeaturedArtists = () => {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
-                    className="w-full bg-transparent border border-psyco-green-DEFAULT text-psyco-green-DEFAULT hover:bg-psyco-green-DEFAULT hover:text-white py-2 px-4 rounded-full text-sm font-medium transition-all flex items-center justify-center"
+                    className="w-full bg-transparent border border-psyco-green-DEFAULT text-psyco-green-DEFAULT hover:bg-gradient-to-r hover:from-psyco-green-DEFAULT hover:to-psyco-purple-DEFAULT hover:text-white py-2 px-4 rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center btn-glow transform hover:scale-105"
                   >
                     <UserPlus size={16} className="mr-2" />
                     دنبال کنید

@@ -1,16 +1,17 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
+    --background: 0 0% 4%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 12%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 12%;
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 160 84% 39%;
@@ -19,7 +20,7 @@
     --secondary: 160 84% 39%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 16%;
+    --muted: 0 0% 12%;
     --muted-foreground: 0 0% 70%;
 
     --accent: 160 84% 39%;
@@ -28,8 +29,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
     --ring: 160 84% 39%;
 
     --radius: 0.75rem;
@@ -40,12 +41,13 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-boldonse;
+    @apply bg-background text-foreground antialiased font-inter;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
   }
 
   html {
-    @apply scroll-smooth font-boldonse;
+    @apply scroll-smooth font-inter;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -53,92 +55,117 @@
 
 @layer components {
   .glassmorphism {
-    @apply backdrop-blur-lg bg-black/70 border border-green-500/10 rounded-xl;
-    box-shadow: 0 4px 30px rgba(16, 185, 129, 0.1);
+    @apply backdrop-blur-xl bg-gradient-to-br from-psyco-black-card to-psyco-black-light/50;
+    border: 1px solid rgba(0, 217, 163, 0.2);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg;
-    box-shadow: 0 4px 10px rgba(16, 185, 129, 0);
+    @apply transition-all duration-500 hover:translate-y-[-8px];
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .card-hover:hover {
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+    box-shadow: 
+      0 20px 40px rgba(0, 217, 163, 0.2),
+      0 0 0 1px rgba(0, 217, 163, 0.3);
   }
   
   .btn-glow {
     @apply relative overflow-hidden;
+    background: linear-gradient(135deg, #00D9A3, #00B084);
   }
   
-  .btn-glow::after {
-    @apply content-[''] absolute top-0 left-[-100%] z-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-500;
+  .btn-glow::before {
+    @apply content-[''] absolute inset-0 bg-shimmer bg-[length:200%_100%] opacity-0 transition-opacity duration-500;
   }
   
-  .btn-glow:hover::after {
-    @apply left-[100%];
+  .btn-glow:hover::before {
+    @apply opacity-100 animate-shimmer;
   }
   
   .text-glow {
-    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    text-shadow: 0 0 20px rgba(0, 217, 163, 0.5);
   }
   
   .section-padding {
-    @apply py-20 px-6 md:px-12 lg:px-24;
+    @apply py-24 px-6 md:px-12 lg:px-24;
   }
   
   .link-hover {
-    position: relative;
+    @apply relative transition-colors duration-300;
   }
   
   .link-hover::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 0;
-    background-color: #10B981;
-    transition: all 0.3s;
+    @apply content-[''] absolute bottom-0 left-0 h-0.5 w-0 bg-psyco-green-DEFAULT transition-all duration-300;
   }
   
   .link-hover:hover::after {
-    width: 100%;
+    @apply w-full;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT bg-clip-text text-transparent;
+  }
+
+  .floating-card {
+    @apply relative;
+  }
+
+  .floating-card::before {
+    @apply content-[''] absolute -inset-1 bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT rounded-xl opacity-0 transition-opacity duration-500 blur-sm;
+  }
+
+  .floating-card:hover::before {
+    @apply opacity-30;
   }
 }
 
 .calendar-container .react-calendar {
-  @apply glassmorphism border-green-500/10 p-4;
+  @apply glassmorphism border-psyco-green-DEFAULT/20 p-4;
 }
 
 .calendar-container .react-calendar__tile--active {
-  @apply bg-green-500 text-white;
+  @apply bg-psyco-green-DEFAULT text-white;
 }
 
 .calendar-container .react-calendar__tile--now {
-  @apply bg-green-500/10 text-green-500;
+  @apply bg-psyco-green-DEFAULT/20 text-psyco-green-DEFAULT;
 }
 
 .calendar-container .react-calendar__navigation button:enabled:hover,
 .calendar-container .react-calendar__navigation button:enabled:focus,
 .calendar-container .react-calendar__tile:enabled:hover,
 .calendar-container .react-calendar__tile:enabled:focus {
-  @apply bg-green-500/10 text-white;
+  @apply bg-psyco-green-DEFAULT/20 text-white;
 }
 
-/* Custom scrollbar */
+/* Enhanced scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-900;
+  @apply bg-psyco-black-DEFAULT;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-green-700 rounded-full;
+  @apply bg-gradient-to-b from-psyco-green-DEFAULT to-psyco-purple-DEFAULT rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-green-500;
+  @apply shadow-lg;
+  box-shadow: 0 0 10px rgba(0, 217, 163, 0.5);
+}
+
+/* Selection styles */
+::selection {
+  @apply bg-psyco-green-DEFAULT/30 text-white;
+}
+
+::-moz-selection {
+  @apply bg-psyco-green-DEFAULT/30 text-white;
 }

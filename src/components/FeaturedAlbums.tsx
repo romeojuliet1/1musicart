@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Play, Heart, ShoppingCart, Music } from 'lucide-react';
+import { useCurrency } from '../contexts/CurrencyContext';
 
 interface Album {
   id: string;
@@ -14,6 +15,8 @@ interface Album {
 }
 
 const FeaturedAlbums = () => {
+  const { formatPrice } = useCurrency();
+
   const albums: Album[] = [
     {
       id: '1',
@@ -48,11 +51,11 @@ const FeaturedAlbums = () => {
   ];
 
   return (
-    <section className="py-16 px-6 md:px-12">
+    <section className="section-padding bg-gradient-to-b from-psyco-black-DEFAULT to-psyco-black-light">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">آلبوم‌های برجسته</h2>
-          <button className="text-psyco-green-DEFAULT hover:text-psyco-green-light transition-colors">
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold gradient-text">آلبوم‌های برجسته</h2>
+          <button className="text-psyco-green-DEFAULT hover:text-psyco-green-light transition-all duration-300 link-hover font-medium">
             مشاهده همه
           </button>
         </div>
@@ -61,48 +64,48 @@ const FeaturedAlbums = () => {
           {albums.map((album, index) => (
             <div
               key={album.id}
-              className="glassmorphism p-6 rounded-xl card-hover animate-fade-in group"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="floating-card glassmorphism p-6 rounded-2xl card-hover animate-fade-in group relative overflow-hidden"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="relative mb-6">
+              <div className="relative mb-6 overflow-hidden rounded-xl">
                 <img
                   src={album.cover}
                   alt={album.title}
-                  className="w-full h-64 object-cover rounded-lg"
+                  className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                  <button className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white rounded-full p-4 transition-all transform group-hover:scale-110">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                  <button className="bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT hover:from-psyco-green-dark hover:to-psyco-purple-dark text-white rounded-full p-4 transition-all duration-300 transform group-hover:scale-110 btn-glow shadow-lg">
                     <Play size={28} />
                   </button>
                 </div>
-                <div className="absolute top-3 right-3 bg-psyco-green-DEFAULT text-white px-3 py-1 rounded-full text-sm">
+                <div className="absolute top-3 right-3 bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
                   {album.genre}
                 </div>
-                <div className="absolute top-3 left-3 bg-black/70 text-white px-2 py-1 rounded-full text-xs">
+                <div className="absolute top-3 left-3 bg-psyco-black-card backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
                   {album.year}
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-xl font-bold text-white group-hover:text-psyco-green-DEFAULT transition-colors">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-white group-hover:text-glow transition-all duration-300">
                   {album.title}
                 </h3>
-                <p className="text-gray-400">{album.artist}</p>
+                <p className="text-psyco-gray-light font-medium">{album.artist}</p>
                 
-                <div className="flex items-center text-sm text-gray-400 space-x-4">
-                  <div className="flex items-center">
-                    <Music size={16} className="mr-1" />
-                    <span>{album.trackCount} ترک</span>
+                <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center text-psyco-gray-DEFAULT space-x-2">
+                    <Music size={16} className="text-psyco-green-DEFAULT" />
+                    <span className="font-medium">{album.trackCount} ترک</span>
                   </div>
-                  <span className="text-psyco-green-DEFAULT font-bold text-lg">${album.price}</span>
+                  <span className="gradient-text font-bold text-lg">{formatPrice(album.price)}</span>
                 </div>
 
                 <div className="flex items-center justify-between pt-4">
-                  <button className="text-gray-400 hover:text-red-500 transition-colors">
-                    <Heart size={20} />
+                  <button className="text-psyco-gray-DEFAULT hover:text-red-500 transition-all duration-300 transform hover:scale-110">
+                    <Heart size={22} />
                   </button>
-                  <button className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white px-6 py-2 rounded-full font-medium transition-colors flex items-center">
-                    <ShoppingCart size={16} className="mr-2" />
+                  <button className="bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT hover:from-psyco-green-dark hover:to-psyco-purple-dark text-white px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center btn-glow shadow-lg transform hover:scale-105">
+                    <ShoppingCart size={18} className="mr-2" />
                     خرید آلبوم
                   </button>
                 </div>

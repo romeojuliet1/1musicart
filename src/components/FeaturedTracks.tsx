@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Play, Heart, ShoppingCart, MoreHorizontal } from 'lucide-react';
+import { useCurrency } from '../contexts/CurrencyContext';
 import DonationModal from './DonationModal';
 
 interface Track {
@@ -18,6 +19,7 @@ interface FeaturedTracksProps {
 }
 
 const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
+  const { formatPrice } = useCurrency();
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
   const [showDonationModal, setShowDonationModal] = useState(false);
 
@@ -98,11 +100,11 @@ const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
   };
 
   return (
-    <section className="py-16 px-6 md:px-12 bg-psyco-black-light">
+    <section className="section-padding bg-gradient-to-b from-psyco-black-light to-psyco-black-DEFAULT">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white">ترک‌های برجسته</h2>
-          <button className="text-psyco-green-DEFAULT hover:text-psyco-green-light transition-colors">
+        <div className="flex justify-between items-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold gradient-text">ترک‌های برجسته</h2>
+          <button className="text-psyco-green-DEFAULT hover:text-psyco-green-light transition-all duration-300 link-hover font-medium">
             مشاهده همه
           </button>
         </div>
@@ -111,51 +113,51 @@ const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
           {tracks.map((track, index) => (
             <div
               key={track.id}
-              className="glassmorphism p-4 rounded-xl card-hover animate-fade-in group"
+              className="floating-card glassmorphism p-4 rounded-2xl card-hover animate-fade-in group relative overflow-hidden"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative mb-4">
+              <div className="relative mb-4 overflow-hidden rounded-xl">
                 <img
                   src={track.cover}
                   alt={track.title}
-                  className="w-full h-48 object-cover rounded-lg"
+                  className="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
                   <button
                     onClick={() => onTrackSelect(track)}
-                    className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white rounded-full p-3 transition-all transform group-hover:scale-110"
+                    className="bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT hover:from-psyco-green-dark hover:to-psyco-purple-dark text-white rounded-full p-3 transition-all duration-300 transform group-hover:scale-110 btn-glow shadow-lg"
                   >
                     <Play size={24} />
                   </button>
                 </div>
-                <div className="absolute top-2 right-2 bg-psyco-green-DEFAULT text-white px-2 py-1 rounded-full text-xs">
+                <div className="absolute top-2 right-2 bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT text-white px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
                   {track.genre}
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="text-white font-medium truncate group-hover:text-psyco-green-DEFAULT transition-colors">
+              <div className="space-y-3">
+                <h3 className="text-white font-medium truncate group-hover:text-glow transition-all duration-300">
                   {track.title}
                 </h3>
-                <p className="text-gray-400 text-sm truncate">{track.artist}</p>
+                <p className="text-psyco-gray-light text-sm truncate font-medium">{track.artist}</p>
                 
-                <div className="flex items-center justify-between text-sm text-gray-400">
-                  <span>{track.duration}</span>
-                  <span className="text-psyco-green-DEFAULT font-medium">${track.price}</span>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-psyco-gray-DEFAULT font-medium">{track.duration}</span>
+                  <span className="gradient-text font-bold">{formatPrice(track.price)}</span>
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
                   <div className="flex items-center space-x-2">
-                    <button className="text-gray-400 hover:text-red-500 transition-colors">
+                    <button className="text-psyco-gray-DEFAULT hover:text-red-500 transition-all duration-300 transform hover:scale-110">
                       <Heart size={18} />
                     </button>
-                    <button className="text-gray-400 hover:text-white transition-colors">
+                    <button className="text-psyco-gray-DEFAULT hover:text-white transition-all duration-300 transform hover:scale-110">
                       <MoreHorizontal size={18} />
                     </button>
                   </div>
                   <button
                     onClick={() => handlePurchaseWithDonation(track)}
-                    className="bg-psyco-green-DEFAULT hover:bg-psyco-green-dark text-white px-3 py-1 rounded-full text-xs font-medium transition-colors flex items-center"
+                    className="bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT hover:from-psyco-green-dark hover:to-psyco-purple-dark text-white px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 flex items-center btn-glow shadow-lg transform hover:scale-105"
                   >
                     <ShoppingCart size={14} className="mr-1" />
                     خرید
