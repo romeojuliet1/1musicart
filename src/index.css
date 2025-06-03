@@ -34,16 +34,6 @@
     --ring: 160 84% 39%;
 
     --radius: 0.75rem;
-
-    /* Custom psyco colors as CSS variables */
-    --psyco-green: #00D9A3;
-    --psyco-green-light: #33E4B8;
-    --psyco-green-dark: #00B084;
-    --psyco-purple: #8B5CF6;
-    --psyco-purple-light: #A78BFA;
-    --psyco-purple-dark: #7C3AED;
-    --psyco-black: #0A0A0A;
-    --psyco-black-light: #1A1A1A;
   }
 
   * {
@@ -65,8 +55,7 @@
 
 @layer components {
   .glassmorphism {
-    @apply backdrop-blur-xl;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.5));
+    @apply backdrop-blur-xl bg-gradient-to-br from-psyco-black-card to-psyco-black-light/50;
     border: 1px solid rgba(0, 217, 163, 0.2);
     box-shadow: 
       0 8px 32px rgba(0, 0, 0, 0.3),
@@ -86,18 +75,15 @@
   
   .btn-glow {
     @apply relative overflow-hidden;
-    background: linear-gradient(135deg, var(--psyco-green), var(--psyco-green-dark));
+    background: linear-gradient(135deg, #00D9A3, #00B084);
   }
   
   .btn-glow::before {
-    @apply content-[''] absolute inset-0 opacity-0 transition-opacity duration-500;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    background-size: 200% 100%;
+    @apply content-[''] absolute inset-0 bg-shimmer bg-[length:200%_100%] opacity-0 transition-opacity duration-500;
   }
   
   .btn-glow:hover::before {
-    @apply opacity-100;
-    animation: shimmer 2s infinite linear;
+    @apply opacity-100 animate-shimmer;
   }
   
   .text-glow {
@@ -113,8 +99,7 @@
   }
   
   .link-hover::after {
-    @apply content-[''] absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300;
-    background-color: var(--psyco-green);
+    @apply content-[''] absolute bottom-0 left-0 h-0.5 w-0 bg-psyco-green-DEFAULT transition-all duration-300;
   }
   
   .link-hover:hover::after {
@@ -122,10 +107,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, var(--psyco-green), var(--psyco-purple));
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    @apply bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT bg-clip-text text-transparent;
   }
 
   .floating-card {
@@ -133,8 +115,7 @@
   }
 
   .floating-card::before {
-    @apply content-[''] absolute -inset-1 rounded-xl opacity-0 transition-opacity duration-500 blur-sm;
-    background: linear-gradient(135deg, var(--psyco-green), var(--psyco-purple));
+    @apply content-[''] absolute -inset-1 bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-purple-DEFAULT rounded-xl opacity-0 transition-opacity duration-500 blur-sm;
   }
 
   .floating-card:hover::before {
@@ -143,26 +124,22 @@
 }
 
 .calendar-container .react-calendar {
-  @apply glassmorphism p-4;
-  border-color: rgba(0, 217, 163, 0.2);
+  @apply glassmorphism border-psyco-green-DEFAULT/20 p-4;
 }
 
 .calendar-container .react-calendar__tile--active {
-  background-color: var(--psyco-green);
-  color: white;
+  @apply bg-psyco-green-DEFAULT text-white;
 }
 
 .calendar-container .react-calendar__tile--now {
-  background-color: rgba(0, 217, 163, 0.2);
-  color: var(--psyco-green);
+  @apply bg-psyco-green-DEFAULT/20 text-psyco-green-DEFAULT;
 }
 
 .calendar-container .react-calendar__navigation button:enabled:hover,
 .calendar-container .react-calendar__navigation button:enabled:focus,
 .calendar-container .react-calendar__tile:enabled:hover,
 .calendar-container .react-calendar__tile:enabled:focus {
-  background-color: rgba(0, 217, 163, 0.2);
-  color: white;
+  @apply bg-psyco-green-DEFAULT/20 text-white;
 }
 
 /* Enhanced scrollbar */
@@ -172,30 +149,23 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--psyco-black);
+  @apply bg-psyco-black-DEFAULT;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--psyco-green), var(--psyco-purple));
-  border-radius: 9999px;
+  @apply bg-gradient-to-b from-psyco-green-DEFAULT to-psyco-purple-DEFAULT rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
+  @apply shadow-lg;
   box-shadow: 0 0 10px rgba(0, 217, 163, 0.5);
 }
 
 /* Selection styles */
 ::selection {
-  background-color: rgba(0, 217, 163, 0.3);
-  color: white;
+  @apply bg-psyco-green-DEFAULT/30 text-white;
 }
 
 ::-moz-selection {
-  background-color: rgba(0, 217, 163, 0.3);
-  color: white;
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  @apply bg-psyco-green-DEFAULT/30 text-white;
 }
