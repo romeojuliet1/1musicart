@@ -121,6 +121,16 @@
   .floating-card:hover::before {
     @apply opacity-30;
   }
+
+  .breathe-animation {
+    animation: breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.015); }
+    100% { transform: scale(1); }
+  }
 }
 
 .calendar-container .react-calendar {
