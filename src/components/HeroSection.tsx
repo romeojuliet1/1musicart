@@ -9,8 +9,8 @@ const HeroSection = () => {
       {/* Background with breathing animation */}
       <div className="absolute inset-0 breathe-animation">
         <img 
-          src="https://media.giphy.com/media/3o7btNhMBytxAM6YBa/giphy.gif" 
-          alt="Man playing guitar and singing" 
+          src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" 
+          alt="Persian musician playing traditional instrument" 
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40"></div>
