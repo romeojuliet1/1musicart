@@ -1,8 +1,11 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Music, Heart, ShoppingBag, Award, Download, Star, Gift } from 'lucide-react';
+import { Music, Heart, ShoppingBag, Award, Download, Star, Gift, Sparkles, Share2 } from 'lucide-react';
+import { useGems } from '@/contexts/GemsContext';
+import { useAffiliate } from '@/contexts/AffiliateContext';
+import GemsDisplay from '@/components/GemsDisplay';
+import AffiliateSystem from '@/components/AffiliateSystem';
 
 interface Purchase {
   id: number;
@@ -24,6 +27,8 @@ interface Donation {
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const { gems, transactions } = useGems();
+  const { totalEarnings, referrals } = useAffiliate();
 
   const purchases: Purchase[] = [
     {
@@ -97,12 +102,12 @@ const Dashboard = () => {
             داشبورد شما
           </h1>
           <p className="text-xl text-gray-300">
-            خریدها و حمایت‌های شما از هنرمندان مستقل
+            خریدها، حمایت‌ها، و فعالیت‌های شما از هنرمندان مستقل
           </p>
         </div>
 
         {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-12">
           <Card className="glassmorphism">
             <CardContent className="p-6 text-center">
               <ShoppingBag size={32} className="text-green-400 mx-auto mb-2" />
@@ -121,19 +126,32 @@ const Dashboard = () => {
           
           <Card className="glassmorphism">
             <CardContent className="p-6 text-center">
-              <Music size={32} className="text-purple-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">{formatPrice(totalSpent)}</div>
-              <div className="text-gray-300">کل خرید</div>
+              <Sparkles size={32} className="text-purple-400 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-white">{gems}</div>
+              <div className="text-gray-300">نت (جواهر)</div>
+            </CardContent>
+          </Card>
+          
+          <Card className="glassmorphism">
+            <CardContent className="p-6 text-center">
+              <Share2 size={32} className="text-blue-400 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-white">{formatPrice(totalEarnings)}</div>
+              <div className="text-gray-300">درآمد همکاری</div>
             </CardContent>
           </Card>
           
           <Card className="glassmorphism">
             <CardContent className="p-6 text-center">
               <Award size={32} className="text-yellow-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-white">{formatPrice(totalDonated)}</div>
-              <div className="text-gray-300">کل حمایت</div>
+              <div className="text-2xl font-bold text-white">{referrals.length}</div>
+              <div className="text-gray-300">ارجاعات</div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Gems Display */}
+        <div className="mb-8">
+          <GemsDisplay />
         </div>
 
         {/* Navigation Tabs */}
@@ -142,6 +160,8 @@ const Dashboard = () => {
             { id: 'overview', name: 'نمای کلی', icon: Award },
             { id: 'purchases', name: 'خریدها', icon: ShoppingBag },
             { id: 'donations', name: 'حمایت‌ها', icon: Heart },
+            { id: 'gems', name: 'نت‌ها', icon: Sparkles },
+            { id: 'affiliate', name: 'همکاری', icon: Share2 },
             { id: 'achievements', name: 'دستاوردها', icon: Star }
           ].map((tab) => {
             const Icon = tab.icon;
@@ -196,6 +216,38 @@ const Dashboard = () => {
           </div>
         )}
 
+        {activeTab === 'gems' && (
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-white mb-6">تراکنش‌های نت</h2>
+            <div className="space-y-3">
+              {transactions.map((transaction) => (
+                <Card key={transaction.id} className="glassmorphism">
+                  <CardContent className="p-4">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <Sparkles size={20} className={transaction.type === 'earned' ? 'text-green-400 ml-3' : 'text-red-400 ml-3'} />
+                        <div>
+                          <div className="text-white font-medium">{transaction.reason}</div>
+                          <div className="text-gray-400 text-sm">{transaction.date}</div>
+                        </div>
+                      </div>
+                      <div className={`text-lg font-bold ${transaction.type === 'earned' ? 'text-green-400' : 'text-red-400'}`}>
+                        {transaction.type === 'earned' ? '+' : '-'}{transaction.amount}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'affiliate' && (
+          <div>
+            <AffiliateSystem />
+          </div>
+        )}
+
         {activeTab === 'donations' && (
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-white mb-6">تاریخچه حمایت‌ها</h2>
@@ -233,25 +285,25 @@ const Dashboard = () => {
                   color: "text-red-400"
                 },
                 {
-                  title: "خریدار فعال",
-                  description: "بیش از ۵ آلبوم خریداری کردید",
-                  icon: ShoppingBag,
-                  achieved: false,
-                  color: "text-blue-400"
-                },
-                {
-                  title: "کلکسیونر",
-                  description: "۱۰ آلبوم فیزیکی در مجموعه‌تان",
-                  icon: Music,
-                  achieved: false,
+                  title: "جمع‌آور نت",
+                  description: "بیش از ۱۰۰ نت جمع‌آوری کردید",
+                  icon: Sparkles,
+                  achieved: gems >= 100,
                   color: "text-purple-400"
                 },
                 {
-                  title: "سفیر موسیقی",
-                  description: "۱۰ نفر را به پلتفرم دعوت کردید",
-                  icon: Star,
-                  achieved: false,
-                  color: "text-yellow-400"
+                  title: "بازاریاب",
+                  description: "اولین ارجاع موفق انجام دادید",
+                  icon: Share2,
+                  achieved: referrals.length > 0,
+                  color: "text-blue-400"
+                },
+                {
+                  title: "خریدار فعال",
+                  description: "بیش از ۵ آلبوم خریداری کردید",
+                  icon: ShoppingBag,
+                  achieved: purchases.length >= 5,
+                  color: "text-green-400"
                 }
               ].map((achievement, index) => (
                 <Card key={index} className={`glassmorphism ${achievement.achieved ? 'ring-2 ring-green-500/50' : 'opacity-60'}`}>

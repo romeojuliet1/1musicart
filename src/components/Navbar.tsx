@@ -1,13 +1,14 @@
-
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Search, User } from 'lucide-react';
+import { Menu, X, Search, User, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useGems } from '@/contexts/GemsContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { gems } = useGems();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,8 +71,14 @@ const Navbar = () => {
             </NavLink>
           ))}
           
-          {/* User Dashboard and Search */}
+          {/* User Dashboard, Gems, and Search */}
           <div className="flex items-center space-x-reverse space-x-4">
+            {/* Gems Display */}
+            <div className="flex items-center glassmorphism px-3 py-2 rounded-full">
+              <Sparkles size={16} className="text-purple-400 ml-1" />
+              <span className="text-white font-medium">{gems}</span>
+            </div>
+            
             <button className="text-white hover:text-green-400 transition-colors">
               <Search size={20} />
             </button>
@@ -101,6 +108,12 @@ const Navbar = () => {
         )}
       >
         <div className="flex flex-col space-y-4">
+          {/* Mobile Gems Display */}
+          <div className="flex items-center justify-center glassmorphism px-4 py-3 rounded-full mb-4">
+            <Sparkles size={20} className="text-purple-400 ml-2" />
+            <span className="text-white font-medium">نت‌های شما: {gems}</span>
+          </div>
+          
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -128,4 +141,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
