@@ -47,14 +47,14 @@ const Navbar = () => {
           <div className="h-20 w-auto md:h-28 md:w-auto relative">
             <img 
               src="/lovable-uploads/5964f950-36a7-430c-a887-4eea91ad4973.png" 
-              alt="Persian Music Logo" 
+              alt="لوگو موسیقی ایرانی" 
               className="h-full w-auto object-contain" 
             />
           </div>
         </NavLink>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-reverse space-x-8">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -71,7 +71,7 @@ const Navbar = () => {
           ))}
           
           {/* User Dashboard and Search */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-reverse space-x-4">
             <button className="text-white hover:text-green-400 transition-colors">
               <Search size={20} />
             </button>
@@ -128,3 +128,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

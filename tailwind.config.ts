@@ -24,10 +24,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'Vazirmatn', 'sans-serif'],
-				inter: ['Inter', 'sans-serif'],
+				sans: ['Vazirmatn', 'Yekan Bakh', 'sans-serif'],
 				vazir: ['Vazirmatn', 'sans-serif'],
-				boldonse: ['Boldonse', 'sans-serif'],
+				yekan: ['Yekan Bakh', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -37,21 +36,21 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				psyco: {
 					green: {
-						DEFAULT: '#00D9A3', // More vibrant primary green
-						light: '#33E4B8', // Lighter green
-						dark: '#00B084', // Darker green
-						muted: 'rgba(0, 217, 163, 0.1)' // Transparent green for backgrounds
+						DEFAULT: '#00D9A3',
+						light: '#33E4B8',
+						dark: '#00B084',
+						muted: 'rgba(0, 217, 163, 0.1)'
 					},
 					purple: {
-						DEFAULT: '#8B5CF6', // Primary purple
-						light: '#A78BFA', // Lighter purple
-						dark: '#7C3AED', // Darker purple
-						muted: 'rgba(139, 92, 246, 0.1)' // Transparent purple
+						DEFAULT: '#8B5CF6',
+						light: '#A78BFA',
+						dark: '#7C3AED',
+						muted: 'rgba(139, 92, 246, 0.1)'
 					},
 					black: {
-						DEFAULT: '#0A0A0A', // Deeper black
-						light: '#1A1A1A', // Lighter black
-						card: 'rgba(26, 26, 26, 0.8)' // Semi-transparent black for cards
+						DEFAULT: '#0A0A0A',
+						light: '#1A1A1A',
+						card: 'rgba(26, 26, 26, 0.8)'
 					},
 					gray: {
 						DEFAULT: '#6B7280',
@@ -151,3 +150,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

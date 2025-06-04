@@ -41,15 +41,30 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-inter;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Vazirmatn', 'Yekan Bakh', sans-serif;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
     background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+    direction: rtl;
+    text-align: right;
   }
 
   html {
-    @apply scroll-smooth font-inter;
+    @apply scroll-smooth;
+    font-family: 'Vazirmatn', 'Yekan Bakh', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    direction: rtl;
+  }
+
+  input, textarea {
+    direction: rtl;
+    text-align: right;
+  }
+
+  input[type="email"] {
+    direction: ltr;
+    text-align: left;
   }
 }
 
@@ -103,7 +118,7 @@
   }
   
   .link-hover::after {
-    @apply content-[''] absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300;
+    @apply content-[''] absolute bottom-0 right-0 h-0.5 w-0 transition-all duration-300;
     background-color: #00D9A3;
   }
   
@@ -145,6 +160,7 @@
 .calendar-container .react-calendar {
   @apply glassmorphism p-4;
   border: 1px solid rgba(0, 217, 163, 0.2);
+  direction: rtl;
 }
 
 .calendar-container .react-calendar__tile--active {
@@ -194,3 +210,4 @@
   background-color: rgba(0, 217, 163, 0.3);
   color: white;
 }
+
