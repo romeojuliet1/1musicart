@@ -3,58 +3,52 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CurrencyProvider } from "./contexts/CurrencyContext";
-import { GemsProvider } from "./contexts/GemsContext";
-import { AffiliateProvider } from "./contexts/AffiliateContext";
-import { AdProvider } from "./contexts/AdContext";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import { AdProvider } from "@/contexts/AdContext";
+import { AffiliateProvider } from "@/contexts/AffiliateContext";
+import { CurrencyProvider } from "@/contexts/CurrencyContext";
+import { GemsProvider } from "@/contexts/GemsContext";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import Index from "./pages/Index";
-import Shop from "./pages/Shop";
 import Artists from "./pages/Artists";
-import Dashboard from "./pages/Dashboard";
 import ArtistProfile from "./pages/ArtistProfile";
+import Profile from "./pages/Profile";
+import Shop from "./pages/Shop";
+import Booking from "./pages/Booking";
+import Services from "./pages/Services";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
-import Booking from "./pages/Booking";
 import References from "./pages/References";
-import Services from "./pages/Services";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import "./App.css";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 5 * 60 * 1000, // 5 minutes
-      gcTime: 10 * 60 * 1000, // 10 minutes
-      retry: 1,
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <CurrencyProvider>
-        <GemsProvider>
-          <AffiliateProvider>
+      <AffiliateProvider>
+        <CurrencyProvider>
+          <GemsProvider>
             <AdProvider>
               <TooltipProvider>
                 <Toaster />
                 <BrowserRouter>
-                  <div className="min-h-screen bg-black text-white">
+                  <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
                     <Navbar />
                     <Routes>
                       <Route path="/" element={<Index />} />
-                      <Route path="/shop" element={<Shop />} />
                       <Route path="/artists" element={<Artists />} />
                       <Route path="/artist/:id" element={<ArtistProfile />} />
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="/blog" element={<Blog />} />
-                      <Route path="/blog/:slug" element={<BlogDetail />} />
+                      <Route path="/profile/:id" element={<Profile />} />
+                      <Route path="/shop" element={<Shop />} />
                       <Route path="/booking" element={<Booking />} />
-                      <Route path="/references" element={<References />} />
                       <Route path="/services" element={<Services />} />
+                      <Route path="/blog" element={<Blog />} />
+                      <Route path="/blog/:id" element={<BlogDetail />} />
+                      <Route path="/references" element={<References />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                     <Footer />
@@ -62,9 +56,9 @@ function App() {
                 </BrowserRouter>
               </TooltipProvider>
             </AdProvider>
-          </AffiliateProvider>
-        </GemsProvider>
-      </CurrencyProvider>
+          </GemsProvider>
+        </CurrencyProvider>
+      </AffiliateProvider>
     </QueryClientProvider>
   );
 }
