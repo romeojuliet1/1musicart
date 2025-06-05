@@ -77,6 +77,15 @@ const VerifiedProfileShowcase = () => {
     }
   };
 
+  const getVerificationBadgeColor = (userType: string) => {
+    switch (userType) {
+      case 'professional':
+        return 'bg-green-500';
+      default:
+        return 'bg-blue-500';
+    }
+  };
+
   const formatNumber = (num: number) => {
     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
     if (num >= 1000) return `${(num / 1000).toFixed(0)}K`;
@@ -119,8 +128,8 @@ const VerifiedProfileShowcase = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-psyco-green-DEFAULT/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
                 
-                {/* Verified Badge */}
-                <div className="absolute -bottom-1 -right-1 bg-blue-500 rounded-full p-1 shadow-lg border-2 border-psyco-black-DEFAULT">
+                {/* Verified Badge with different colors */}
+                <div className={`absolute -bottom-1 -right-1 ${getVerificationBadgeColor(profile.userType)} rounded-full p-1 shadow-lg border-2 border-psyco-black-DEFAULT`}>
                   <CheckCircle className="w-5 h-5 text-white" fill="currentColor" />
                 </div>
 

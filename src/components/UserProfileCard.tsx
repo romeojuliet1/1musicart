@@ -32,7 +32,19 @@ const UserProfileCard = ({ user, isOwn = false }: UserProfileCardProps) => {
     }
   };
 
+  const getVerificationBadgeColor = () => {
+    if (!user.isVerified) return null;
+    
+    switch (user.userType) {
+      case 'professional':
+        return 'bg-green-500';
+      default:
+        return 'bg-blue-500';
+    }
+  };
+
   const typeInfo = getUserTypeInfo();
+  const verificationBadgeColor = getVerificationBadgeColor();
 
   return (
     <div className="glassmorphism p-8 rounded-2xl">
@@ -43,8 +55,8 @@ const UserProfileCard = ({ user, isOwn = false }: UserProfileCardProps) => {
             alt={user.name}
             className="w-32 h-32 rounded-full object-cover border-4 border-psyco-green-DEFAULT/20"
           />
-          {user.isVerified && (
-            <div className="absolute -bottom-2 -right-2 bg-blue-500 rounded-full p-1">
+          {user.isVerified && verificationBadgeColor && (
+            <div className={`absolute -bottom-2 -right-2 ${verificationBadgeColor} rounded-full p-1`}>
               <CheckCircle className="w-6 h-6 text-white" fill="currentColor" />
             </div>
           )}
