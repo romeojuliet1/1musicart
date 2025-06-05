@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
 import { GemsProvider } from "./contexts/GemsContext";
 import { AffiliateProvider } from "./contexts/AffiliateContext";
+import { AdProvider } from "./contexts/AdContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
@@ -20,7 +21,16 @@ import References from "./pages/References";
 import Services from "./pages/Services";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   return (
@@ -28,28 +38,30 @@ function App() {
       <CurrencyProvider>
         <GemsProvider>
           <AffiliateProvider>
-            <TooltipProvider>
-              <Toaster />
-              <BrowserRouter>
-                <div className="min-h-screen bg-black text-white">
-                  <Navbar />
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/shop" element={<Shop />} />
-                    <Route path="/artists" element={<Artists />} />
-                    <Route path="/artist/:id" element={<ArtistProfile />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:slug" element={<BlogDetail />} />
-                    <Route path="/booking" element={<Booking />} />
-                    <Route path="/references" element={<References />} />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                  <Footer />
-                </div>
-              </BrowserRouter>
-            </TooltipProvider>
+            <AdProvider>
+              <TooltipProvider>
+                <Toaster />
+                <BrowserRouter>
+                  <div className="min-h-screen bg-black text-white">
+                    <Navbar />
+                    <Routes>
+                      <Route path="/" element={<Index />} />
+                      <Route path="/shop" element={<Shop />} />
+                      <Route path="/artists" element={<Artists />} />
+                      <Route path="/artist/:id" element={<ArtistProfile />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/blog" element={<Blog />} />
+                      <Route path="/blog/:slug" element={<BlogDetail />} />
+                      <Route path="/booking" element={<Booking />} />
+                      <Route path="/references" element={<References />} />
+                      <Route path="/services" element={<Services />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                    <Footer />
+                  </div>
+                </BrowserRouter>
+              </TooltipProvider>
+            </AdProvider>
           </AffiliateProvider>
         </GemsProvider>
       </CurrencyProvider>
