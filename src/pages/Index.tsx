@@ -5,6 +5,8 @@ import MusicPlayer from "@/components/MusicPlayer";
 import FeaturedTracks from "@/components/FeaturedTracks";
 import FeaturedAlbums from "@/components/FeaturedAlbums";
 import FeaturedArtists from "@/components/FeaturedArtists";
+import VerifiedProfileShowcase from "@/components/VerifiedProfileShowcase";
+import RandomDiscovery from "@/components/RandomDiscovery";
 import AdSection from "@/components/AdSection";
 import { Link } from "react-router-dom";
 import { Music, Ticket, Users, Mail } from "lucide-react";
@@ -64,6 +66,12 @@ const Index = () => {
       
       {/* Header Ad Section */}
       <AdSection position="header" className="px-6 md:px-12" />
+      
+      {/* Verified Profiles Showcase */}
+      <VerifiedProfileShowcase />
+      
+      {/* Random Discovery Section */}
+      <RandomDiscovery />
       
       {/* Grid Sections */}
       <section className="py-16 px-6 md:px-12 bg-gradient-to-b from-gray-900 to-black">
