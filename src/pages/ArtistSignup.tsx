@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -9,8 +8,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calendar, Upload, Music, DollarSign, Clock } from 'lucide-react';
+import { Calendar, Upload, Music, DollarSign, Clock, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useAuth } from '@/hooks/useAuth';
+import { useFileUpload } from '@/hooks/useFileUpload';
+import { supabase } from '@/lib/supabase';
 
 const artistSignupSchema = z.object({
   fullName: z.string().min(2, 'نام کامل باید حداقل ۲ کاراکتر باشد'),
@@ -30,6 +32,11 @@ type ArtistSignupForm = z.infer<typeof artistSignupSchema>;
 const ArtistSignup = () => {
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const navigate = useNavigate();
+  const { signUp } = useAuth();
+  const { uploadCoverImage, uploading } = useFileUpload();
 
   const form = useForm<ArtistSignupForm>({
     resolver: zodResolver(artistSignupSchema),
@@ -61,12 +68,76 @@ const ArtistSignup = () => {
     }
   };
 
-  const onSubmit = (data: ArtistSignupForm) => {
-    console.log('Artist signup data:', data);
-    console.log('Cover image:', coverImage);
-    
-    // TODO: اتصال به Supabase برای ثبت‌نام و ذخیره اطلاعات
-    toast.success('ثبت‌نام با موفقیت انجام شد! لطفاً ایمیل خود را بررسی کنید.');
+  const onSubmit = async (data: ArtistSignupForm) => {
+    try {
+      setIsSubmitting(true);
+      console.log('شروع ثبت‌نام...', data);
+
+      // ثبت‌نام کاربر
+      const { data: authData, error: authError } = await signUp(data.email, data.password, {
+        fullName: data.fullName,
+        artistName: data.artistName,
+        email: data.email
+      });
+
+      if (authError) {
+        toast.error(`خطا در ثبت‌نام: ${authError.message}`);
+        return;
+      }
+
+      if (!authData.user) {
+        toast.error('خطا در ایجاد حساب کاربری');
+        return;
+      }
+
+      let coverImageUrl = null;
+
+      // آپلود تصویر کاور اگر انتخاب شده
+      if (coverImage) {
+        const { url, error: uploadError } = await uploadCoverImage(coverImage, authData.user.id);
+        if (uploadError) {
+          console.error('خطا در آپلود تصویر:', uploadError);
+          toast.error('خطا در آپلود تصویر کاور');
+        } else {
+          coverImageUrl = url;
+        }
+      }
+
+      // ایجاد کمپین
+      const { error: campaignError } = await supabase
+        .from('campaigns')
+        .insert({
+          artist_id: authData.user.id,
+          title: data.projectTitle,
+          description: data.projectDescription,
+          target_amount: data.targetAmount,
+          currency: data.currency,
+          deadline: data.deadline,
+          project_type: data.projectType,
+          cover_image_url: coverImageUrl,
+          status: 'pending',
+          current_amount: 0
+        });
+
+      if (campaignError) {
+        console.error('خطا در ایجاد کمپین:', campaignError);
+        toast.error('خطا در ایجاد کمپین');
+        return;
+      }
+
+      toast.success('ثبت‌نام با موفقیت انجام شد! کمپین شما برای بررسی ارسال شده است.');
+      
+      // هدایت به داشبورد
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 2000);
+
+    } catch (error) {
+      console.error('خطای غیرمنتظره:', error);
+      toast.error('خطای غیرمنتظره رخ داد');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -380,9 +451,17 @@ const ArtistSignup = () => {
               <div className="flex flex-col md:flex-row gap-4 pt-8">
                 <Button
                   type="submit"
+                  disabled={isSubmitting || uploading}
                   className="flex-1 bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-green-dark hover:from-psyco-green-dark hover:to-psyco-green-DEFAULT text-white py-4 text-lg font-bold rounded-xl transition-all duration-300 transform hover:scale-105 font-vazir"
                 >
-                  ایجاد کمپین
+                  {isSubmitting || uploading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin ml-2" />
+                      {uploading ? 'در حال آپلود...' : 'در حال ایجاد کمپین...'}
+                    </>
+                  ) : (
+                    'ایجاد کمپین'
+                  )}
                 </Button>
                 
                 <Link

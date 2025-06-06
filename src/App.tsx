@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -23,44 +22,47 @@ import References from "./pages/References";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import "./App.css";
+import { AuthProvider } from "@/hooks/useAuth";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <AffiliateProvider>
-        <CurrencyProvider>
-          <GemsProvider>
-            <AdProvider>
-              <TooltipProvider>
-                <Toaster />
-                <BrowserRouter>
-                  <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
-                    <Navbar />
-                    <Routes>
-                      <Route path="/" element={<Index />} />
-                      <Route path="/artists" element={<Artists />} />
-                      <Route path="/artist/:id" element={<ArtistProfile />} />
-                      <Route path="/artist-signup" element={<ArtistSignup />} />
-                      <Route path="/profile/:id" element={<Profile />} />
-                      <Route path="/shop" element={<Shop />} />
-                      <Route path="/booking" element={<Booking />} />
-                      <Route path="/services" element={<Services />} />
-                      <Route path="/blog" element={<Blog />} />
-                      <Route path="/blog/:id" element={<BlogDetail />} />
-                      <Route path="/references" element={<References />} />
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="*" element={<NotFound />} />
-                    </Routes>
-                    <Footer />
-                  </div>
-                </BrowserRouter>
-              </TooltipProvider>
-            </AdProvider>
-          </GemsProvider>
-        </CurrencyProvider>
-      </AffiliateProvider>
+      <AuthProvider>
+        <AffiliateProvider>
+          <CurrencyProvider>
+            <GemsProvider>
+              <AdProvider>
+                <TooltipProvider>
+                  <Toaster />
+                  <BrowserRouter>
+                    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+                      <Navbar />
+                      <Routes>
+                        <Route path="/" element={<Index />} />
+                        <Route path="/artists" element={<Artists />} />
+                        <Route path="/artist/:id" element={<ArtistProfile />} />
+                        <Route path="/artist-signup" element={<ArtistSignup />} />
+                        <Route path="/profile/:id" element={<Profile />} />
+                        <Route path="/shop" element={<Shop />} />
+                        <Route path="/booking" element={<Booking />} />
+                        <Route path="/services" element={<Services />} />
+                        <Route path="/blog" element={<Blog />} />
+                        <Route path="/blog/:id" element={<BlogDetail />} />
+                        <Route path="/references" element={<References />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
+                      <Footer />
+                    </div>
+                  </BrowserRouter>
+                </TooltipProvider>
+              </AdProvider>
+            </GemsProvider>
+          </CurrencyProvider>
+        </AffiliateProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
