@@ -1,77 +1,76 @@
 
-export interface User {
+export interface BaseUser {
   id: string;
   name: string;
   email: string;
   avatar: string;
-  userType: 'artist' | 'professional' | 'fan';
-  isVerified: boolean;
   bio?: string;
+  userType: 'fan' | 'artist' | 'professional';
   joinDate: Date;
-  stats: UserStats;
-  socialLinks?: SocialLinks;
+  isVerified: boolean;
+  stats: {
+    albumsPurchased: number;
+    singlesPurchased: number;
+    videosPurchased: number;
+    totalSpent: number;
+    donationsGiven: number;
+  };
 }
 
-export interface Artist extends User {
+export interface Fan extends BaseUser {
+  userType: 'fan';
+  favoriteGenres: string[];
+  followedArtists: string[];
+}
+
+export interface Artist extends BaseUser {
   userType: 'artist';
+  artistName?: string;
   genres: string[];
   albums: number;
   singles: number;
   videos: number;
   followers: number;
-  totalSales: number;
-  activeDaysThisWeek: number;
-  lastActiveDate: Date;
+  totalEarnings: number;
+  activeCampaigns: number;
 }
 
-export interface ProfessionalUser extends User {
+export interface ProfessionalUser extends BaseUser {
   userType: 'professional';
+  specialization: string;
   totalLikes: number;
   totalComments: number;
-  expertise: string[];
   reputation: number;
+  expertise: string[];
 }
 
-export interface Fan extends User {
-  userType: 'fan';
-  favoriteGenres: string[];
-  following: number;
+export type User = Fan | Artist | ProfessionalUser;
+
+export interface VerificationBadge {
+  type: 'blue' | 'green' | 'gold' | 'silver';
+  description: string;
+  requirements: string;
 }
 
-export interface UserStats {
-  albumsPurchased: number;
-  singlesPurchased: number;
-  videosPurchased: number;
-  totalSpent: number;
-  donationsGiven: number;
-}
-
-export interface SocialLinks {
-  instagram?: string;
-  twitter?: string;
-  youtube?: string;
-  website?: string;
-}
-
-export interface Post {
-  id: string;
-  authorId: string;
-  author: User;
-  content: string;
-  images?: string[];
-  timestamp: Date;
-  likes: number;
-  comments: Comment[];
-  hasLiked: boolean;
-}
-
-export interface Comment {
-  id: string;
-  authorId: string;
-  author: User;
-  content: string;
-  timestamp: Date;
-  likes: number;
-  hasLiked: boolean;
-  replies?: Comment[];
-}
+export const verificationBadges: Record<string, VerificationBadge> = {
+  blue: {
+    type: 'blue',
+    description: 'هنرمندان و پروفایل‌های تایید شده',
+    requirements: 'تایید هویت و کیفیت آثار'
+  },
+  green: {
+    type: 'green',
+    description: 'کارشناسان موسیقی',
+    requirements: 'تخصص و تجربه در زمینه موسیقی'
+  },
+  gold: {
+    type: 'gold',
+    description: 'سرمایه‌گذاران طلایی',
+    requirements: 'سرمایه‌گذاری بالای 250 میلیون تومان سالانه'
+  },
+  silver: {
+    type: 'silver',
+    description: 'سرمایه‌گذاران نقره‌ای',
+    requirements: 'سرمایه‌گذاری بالای 150 میلیون تومان سالانه'
+  }
+};
