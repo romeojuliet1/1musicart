@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import Artists from "./pages/Artists";
 import ArtistProfile from "./pages/ArtistProfile";
+import ArtistSignup from "./pages/ArtistSignup";
 import Profile from "./pages/Profile";
 import Shop from "./pages/Shop";
 import Booking from "./pages/Booking";
@@ -41,6 +42,7 @@ function App() {
                       <Route path="/" element={<Index />} />
                       <Route path="/artists" element={<Artists />} />
                       <Route path="/artist/:id" element={<ArtistProfile />} />
+                      <Route path="/artist-signup" element={<ArtistSignup />} />
                       <Route path="/profile/:id" element={<Profile />} />
                       <Route path="/shop" element={<Shop />} />
                       <Route path="/booking" element={<Booking />} />

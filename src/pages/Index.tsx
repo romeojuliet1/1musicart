@@ -9,7 +9,7 @@ import VerifiedProfileShowcase from "@/components/VerifiedProfileShowcase";
 import RandomDiscovery from "@/components/RandomDiscovery";
 import AdSection from "@/components/AdSection";
 import { Link } from "react-router-dom";
-import { Music, Ticket, Users, Mail } from "lucide-react";
+import { Music, Ticket, Users, Mail, UserPlus } from "lucide-react";
 import { sanitizeInput, validateEmail, isRateLimited } from "@/utils/security";
 import { debounce } from "@/utils/performance";
 import { toast } from "sonner";
@@ -66,6 +66,27 @@ const Index = () => {
       
       {/* Header Ad Section */}
       <AdSection position="header" className="px-6 md:px-12" />
+      
+      {/* دعوت به ثبت‌نام هنرمندان */}
+      <section className="py-16 px-6 md:px-12">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="glassmorphism p-8 md:p-12 rounded-2xl">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-vazir">
+              هنرمند هستید؟
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 font-vazir">
+              پروژه موسیقی خود را ایجاد کنید و از حمایت‌کنندگان کمک بگیرید
+            </p>
+            <Link
+              to="/artist-signup"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-psyco-green-DEFAULT to-psyco-green-dark hover:from-psyco-green-dark hover:to-psyco-green-DEFAULT text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg font-vazir text-lg"
+            >
+              <UserPlus className="w-6 h-6" />
+              شروع ثبت‌نام
+            </Link>
+          </div>
+        </div>
+      </section>
       
       {/* Verified Profiles Showcase */}
       <VerifiedProfileShowcase />
