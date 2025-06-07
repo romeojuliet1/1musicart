@@ -1,18 +1,17 @@
-
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import UserProfileCard from '@/components/UserProfileCard';
+import InvestorProfileCard from '@/components/InvestorProfileCard';
 import PostCard from '@/components/PostCard';
-import { User, Artist, ProfessionalUser, Fan, Post } from '@/types/user';
+import { User, Artist, ProfessionalUser, Fan, Post, InvestorUser } from '@/types/user';
 import { Plus, Image, Calendar } from 'lucide-react';
 
 const Profile = () => {
   const { id } = useParams();
   
   // Mock data - در واقعیت از API دریافت می‌شود
-  const getUser = (userId: string): User => {
-    // Sample verified artists
-    const users: User[] = [
+  const getUser = (userId: string): User & Partial<InvestorUser> => {
+    // Sample verified artists and investors
+    const users: (User & Partial<InvestorUser>)[] = [
       {
         id: '1',
         name: 'محسن چاوشی',
@@ -27,9 +26,8 @@ const Profile = () => {
         singles: 120,
         videos: 45,
         followers: 2500000,
-        totalSales: 850000,
-        activeDaysThisWeek: 6,
-        lastActiveDate: new Date(),
+        totalEarnings: 850000,
+        activeCampaigns: 6,
         stats: {
           albumsPurchased: 0,
           singlesPurchased: 0,
@@ -47,10 +45,20 @@ const Profile = () => {
         isVerified: true,
         bio: 'منتقد موسیقی و تولیدکننده برجسته با تخصص در موسیقی کلاسیک',
         joinDate: new Date('2019-03-20'),
+        specialization: 'نقد موسیقی',
         totalLikes: 125000,
         totalComments: 8500,
         expertise: ['نقد موسیقی', 'تولید موسیقی', 'موسیقی کلاسیک'],
         reputation: 4.8,
+        investorTier: 'diamond',
+        totalInvestment: 750,
+        projectsSupported: 25,
+        specialFeatures: {
+          customBranding: true,
+          directArtistContact: true,
+          financialReports: true,
+          earlyAccess: true
+        },
         stats: {
           albumsPurchased: 35,
           singlesPurchased: 150,
@@ -58,7 +66,7 @@ const Profile = () => {
           totalSpent: 1250.00,
           donationsGiven: 300.00
         }
-      } as ProfessionalUser,
+      } as ProfessionalUser & InvestorUser,
       {
         id: '3',
         name: 'علی پارسا',
@@ -73,9 +81,8 @@ const Profile = () => {
         singles: 85,
         videos: 30,
         followers: 890000,
-        totalSales: 420000,
-        activeDaysThisWeek: 4,
-        lastActiveDate: new Date(Date.now() - 24 * 60 * 60 * 1000),
+        totalEarnings: 420000,
+        activeCampaigns: 4,
         stats: {
           albumsPurchased: 0,
           singlesPurchased: 0,
@@ -94,7 +101,14 @@ const Profile = () => {
         bio: 'جمع‌آور و حامی موسیقی مستقل با بیش از 10000 ساعت گوش دادن',
         joinDate: new Date('2020-11-05'),
         favoriteGenres: ['سنتی', 'پاپ', 'کلاسیک'],
-        following: 245,
+        followedArtists: ['1', '3'],
+        investorTier: 'gold',
+        totalInvestment: 300,
+        projectsSupported: 12,
+        specialFeatures: {
+          customBranding: true,
+          earlyAccess: true
+        },
         stats: {
           albumsPurchased: 125,
           singlesPurchased: 450,
@@ -102,14 +116,14 @@ const Profile = () => {
           totalSpent: 2340.50,
           donationsGiven: 500.00
         }
-      } as Fan
+      } as Fan & InvestorUser
     ];
 
     return users.find(u => u.id === userId) || users[0];
   };
 
   const user = getUser(id || '1');
-  const isOwnProfile = true; // In real app, check if current user owns this profile
+  const isOwnProfile = true;
 
   const [posts, setPosts] = useState<Post[]>([
     {
@@ -177,6 +191,8 @@ const Profile = () => {
         userType: 'fan' as const,
         isVerified: false,
         joinDate: new Date(),
+        favoriteGenres: ['پاپ'],
+        followedArtists: [],
         stats: {
           albumsPurchased: 5,
           singlesPurchased: 15,
@@ -201,7 +217,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-psyco-black-DEFAULT via-psyco-black-light to-psyco-black-DEFAULT pt-24 pb-16">
       <div className="max-w-4xl mx-auto px-6">
-        <UserProfileCard user={user} isOwn={isOwnProfile} />
+        <InvestorProfileCard user={user} isOwn={isOwnProfile} />
 
         {/* Create Post Section - Only show for own profile */}
         {isOwnProfile && (

@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
-import { Post } from '@/types/user';
-import { Heart, MessageCircle, Share2, MoreHorizontal, CheckCircle } from 'lucide-react';
+import { Post, InvestorUser } from '@/types/user';
+import { Heart, MessageCircle, Share2, MoreHorizontal } from 'lucide-react';
+import VerificationBadge from './VerificationBadge';
 
 interface PostCardProps {
   post: Post;
@@ -33,6 +33,7 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
   };
 
   const typeInfo = getUserTypeInfo();
+  const investorUser = post.author as InvestorUser;
 
   return (
     <div className="glassmorphism p-6 rounded-xl">
@@ -43,9 +44,22 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
             alt={post.author.name}
             className="w-12 h-12 rounded-full object-cover"
           />
-          {post.author.isVerified && (
-            <CheckCircle className="absolute -bottom-1 -right-1 w-5 h-5 text-blue-500 fill-current bg-psyco-black-DEFAULT rounded-full" />
-          )}
+          
+          {/* Show verification badges */}
+          <div className="absolute -bottom-1 -right-1 flex flex-col gap-1">
+            {post.author.isVerified && (
+              <VerificationBadge 
+                type={post.author.userType === 'professional' ? 'green' : 'blue'} 
+                size="sm" 
+              />
+            )}
+            {investorUser.investorTier && (
+              <VerificationBadge 
+                type={investorUser.investorTier} 
+                size="sm" 
+              />
+            )}
+          </div>
         </div>
 
         <div className="flex-1">
@@ -54,6 +68,22 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
               <div className="flex items-center gap-2">
                 <h3 className="text-white font-semibold">{post.author.name}</h3>
                 <span className={`text-xs ${typeInfo.color}`}>{typeInfo.label}</span>
+                
+                {/* Inline verification badges for better visibility */}
+                <div className="flex items-center gap-1">
+                  {post.author.isVerified && (
+                    <VerificationBadge 
+                      type={post.author.userType === 'professional' ? 'green' : 'blue'} 
+                      size="sm" 
+                    />
+                  )}
+                  {investorUser.investorTier && (
+                    <VerificationBadge 
+                      type={investorUser.investorTier} 
+                      size="sm" 
+                    />
+                  )}
+                </div>
               </div>
               <p className="text-gray-400 text-sm">
                 {new Intl.DateTimeFormat('fa-IR', {
@@ -138,43 +168,71 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
               </form>
 
               <div className="space-y-3">
-                {post.comments.map((comment) => (
-                  <div key={comment.id} className="flex gap-3">
-                    <div className="relative">
-                      <img
-                        src={comment.author.avatar}
-                        alt={comment.author.name}
-                        className="w-8 h-8 rounded-full object-cover"
-                      />
-                      {comment.author.isVerified && (
-                        <CheckCircle className="absolute -bottom-1 -right-1 w-4 h-4 text-blue-500 fill-current bg-psyco-black-DEFAULT rounded-full" />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <div className="bg-psyco-black-light rounded-lg p-3">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-white font-medium text-sm">{comment.author.name}</span>
-                          <span className="text-gray-400 text-xs">
-                            {new Intl.DateTimeFormat('fa-IR', {
-                              hour: '2-digit',
-                              minute: '2-digit'
-                            }).format(comment.timestamp)}
-                          </span>
+                {post.comments.map((comment) => {
+                  const commentInvestor = comment.author as InvestorUser;
+                  return (
+                    <div key={comment.id} className="flex gap-3">
+                      <div className="relative">
+                        <img
+                          src={comment.author.avatar}
+                          alt={comment.author.name}
+                          className="w-8 h-8 rounded-full object-cover"
+                        />
+                        <div className="absolute -bottom-1 -right-1 flex">
+                          {comment.author.isVerified && (
+                            <VerificationBadge 
+                              type={comment.author.userType === 'professional' ? 'green' : 'blue'} 
+                              size="sm" 
+                            />
+                          )}
+                          {commentInvestor.investorTier && (
+                            <VerificationBadge 
+                              type={commentInvestor.investorTier} 
+                              size="sm" 
+                            />
+                          )}
                         </div>
-                        <p className="text-gray-200 text-sm">{comment.content}</p>
                       </div>
-                      <div className="flex items-center gap-4 mt-1 text-xs">
-                        <button className={`flex items-center gap-1 ${comment.hasLiked ? 'text-red-500' : 'text-gray-400 hover:text-red-500'} transition-colors`}>
-                          <Heart className={`w-3 h-3 ${comment.hasLiked ? 'fill-current' : ''}`} />
-                          <span>{comment.likes}</span>
-                        </button>
-                        <button className="text-gray-400 hover:text-psyco-green-DEFAULT transition-colors">
-                          پاسخ
-                        </button>
+                      <div className="flex-1">
+                        <div className="bg-psyco-black-light rounded-lg p-3">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-white font-medium text-sm">{comment.author.name}</span>
+                            <div className="flex items-center gap-1">
+                              {comment.author.isVerified && (
+                                <VerificationBadge 
+                                  type={comment.author.userType === 'professional' ? 'green' : 'blue'} 
+                                  size="sm" 
+                                />
+                              )}
+                              {commentInvestor.investorTier && (
+                                <VerificationBadge 
+                                  type={commentInvestor.investorTier} 
+                                  size="sm" 
+                                />
+                              )}
+                            </div>
+                            <span className="text-gray-400 text-xs">
+                              {new Intl.DateTimeFormat('fa-IR', {
+                                hour: '2-digit',
+                                minute: '2-digit'
+                              }).format(comment.timestamp)}
+                            </span>
+                          </div>
+                          <p className="text-gray-200 text-sm">{comment.content}</p>
+                        </div>
+                        <div className="flex items-center gap-4 mt-1 text-xs">
+                          <button className={`flex items-center gap-1 ${comment.hasLiked ? 'text-red-500' : 'text-gray-400 hover:text-red-500'} transition-colors`}>
+                            <Heart className={`w-3 h-3 ${comment.hasLiked ? 'fill-current' : ''}`} />
+                            <span>{comment.likes}</span>
+                          </button>
+                          <button className="text-gray-400 hover:text-psyco-green-DEFAULT transition-colors">
+                            پاسخ
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
