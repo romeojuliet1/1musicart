@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserProfileCard from '@/components/UserProfileCard';
 import PostCard from '@/components/PostCard';
-import { Artist, Post } from '@/types/user';
+import { Artist, Post, Fan } from '@/types/user';
 import { Plus, Image, Calendar } from 'lucide-react';
 
 const ArtistProfile = () => {
@@ -24,19 +24,14 @@ const ArtistProfile = () => {
     singles: 23,
     videos: 12,
     followers: 125000,
-    totalSales: 50000,
-    activeDaysThisWeek: 5,
-    lastActiveDate: new Date(),
+    totalEarnings: 50000,
+    activeCampaigns: 3,
     stats: {
       albumsPurchased: 0,
       singlesPurchased: 0,
       videosPurchased: 0,
       totalSpent: 0,
       donationsGiven: 0
-    },
-    socialLinks: {
-      instagram: 'https://instagram.com/ehsan_music',
-      youtube: 'https://youtube.com/ehsan_music'
     }
   };
 
@@ -61,7 +56,13 @@ const ArtistProfile = () => {
             avatar: '/lovable-uploads/becfc2e3-b59f-4f86-afca-b9f6fc7b7c14.png',
             userType: 'professional',
             isVerified: false,
+            bio: 'منتقد موسیقی',
             joinDate: new Date(),
+            specialization: 'music criticism',
+            totalLikes: 1250,
+            totalComments: 458,
+            reputation: 4.7,
+            expertise: ['classical', 'pop'],
             stats: {
               albumsPurchased: 15,
               singlesPurchased: 45,
@@ -121,6 +122,8 @@ const ArtistProfile = () => {
         userType: 'fan' as const,
         isVerified: false,
         joinDate: new Date(),
+        favoriteGenres: ['پاپ', 'راک'],
+        followedArtists: [artist.id],
         stats: {
           albumsPurchased: 5,
           singlesPurchased: 15,
@@ -128,7 +131,7 @@ const ArtistProfile = () => {
           totalSpent: 89.50,
           donationsGiven: 20.00
         }
-      },
+      } as Fan,
       content,
       timestamp: new Date(),
       likes: 0,

@@ -62,7 +62,7 @@ const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
     }
   ];
 
-  // Mock artist data for donation
+  // Mock artist data for donation - fixed to match Artist type
   const mockArtist = {
     id: '1',
     name: 'احسان خواجه امیری',
@@ -77,9 +77,8 @@ const FeaturedTracks = ({ onTrackSelect }: FeaturedTracksProps) => {
     singles: 23,
     videos: 12,
     followers: 125000,
-    totalSales: 50000,
-    activeDaysThisWeek: 5,
-    lastActiveDate: new Date(),
+    totalEarnings: 50000,
+    activeCampaigns: 3,
     stats: {
       albumsPurchased: 0,
       singlesPurchased: 0,

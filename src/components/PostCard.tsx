@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Post, InvestorUser } from '@/types/user';
 import { Heart, MessageCircle, Share2, MoreHorizontal } from 'lucide-react';
@@ -32,8 +33,13 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
     }
   };
 
+  // Helper function to check if user has investor properties
+  const hasInvestorProperties = (user: any): user is InvestorUser => {
+    return user && typeof user.totalInvestment === 'number' && typeof user.projectsSupported === 'number';
+  };
+
   const typeInfo = getUserTypeInfo();
-  const investorUser = post.author as InvestorUser;
+  const authorAsInvestor = hasInvestorProperties(post.author) ? post.author : null;
 
   return (
     <div className="glassmorphism p-6 rounded-xl">
@@ -53,9 +59,9 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
                 size="sm" 
               />
             )}
-            {investorUser.investorTier && (
+            {authorAsInvestor?.investorTier && (
               <VerificationBadge 
-                type={investorUser.investorTier} 
+                type={authorAsInvestor.investorTier} 
                 size="sm" 
               />
             )}
@@ -77,9 +83,9 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
                       size="sm" 
                     />
                   )}
-                  {investorUser.investorTier && (
+                  {authorAsInvestor?.investorTier && (
                     <VerificationBadge 
-                      type={investorUser.investorTier} 
+                      type={authorAsInvestor.investorTier} 
                       size="sm" 
                     />
                   )}
@@ -169,7 +175,7 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
 
               <div className="space-y-3">
                 {post.comments.map((comment) => {
-                  const commentInvestor = comment.author as InvestorUser;
+                  const commentAsInvestor = hasInvestorProperties(comment.author) ? comment.author : null;
                   return (
                     <div key={comment.id} className="flex gap-3">
                       <div className="relative">
@@ -185,9 +191,9 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
                               size="sm" 
                             />
                           )}
-                          {commentInvestor.investorTier && (
+                          {commentAsInvestor?.investorTier && (
                             <VerificationBadge 
-                              type={commentInvestor.investorTier} 
+                              type={commentAsInvestor.investorTier} 
                               size="sm" 
                             />
                           )}
@@ -204,9 +210,9 @@ const PostCard = ({ post, onLike, onComment }: PostCardProps) => {
                                   size="sm" 
                                 />
                               )}
-                              {commentInvestor.investorTier && (
+                              {commentAsInvestor?.investorTier && (
                                 <VerificationBadge 
-                                  type={commentInvestor.investorTier} 
+                                  type={commentAsInvestor.investorTier} 
                                   size="sm" 
                                 />
                               )}
