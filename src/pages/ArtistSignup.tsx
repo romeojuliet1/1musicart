@@ -65,15 +65,31 @@ const ArtistSignup = () => {
       setCoverImage(file);
       const url = URL.createObjectURL(file);
       setPreviewUrl(url);
+      console.log('📷 تصویر کاور انتخاب شد:', file.name, 'اندازه:', file.size);
     }
   };
 
   const onSubmit = async (data: ArtistSignupForm) => {
     try {
       setIsSubmitting(true);
-      console.log('شروع ثبت‌نام...', data);
+      console.log('🎯 شروع فرآیند ثبت‌نام کامل...', data);
+
+      // بررسی اتصال به Supabase
+      console.log('🔗 بررسی اتصال به Supabase...');
+      const { data: testConnection, error: connectionError } = await supabase
+        .from('artists')
+        .select('count', { count: 'exact', head: true });
+      
+      if (connectionError) {
+        console.error('❌ خطا در اتصال به Supabase:', connectionError);
+        toast.error('خطا در اتصال به پایگاه داده');
+        return;
+      } else {
+        console.log('✅ اتصال به Supabase موفق');
+      }
 
       // ثبت‌نام کاربر
+      console.log('👤 شروع ثبت‌نام کاربر...');
       const { data: authData, error: authError } = await signUp(data.email, data.password, {
         fullName: data.fullName,
         artistName: data.artistName,
@@ -81,59 +97,72 @@ const ArtistSignup = () => {
       });
 
       if (authError) {
+        console.error('❌ خطا در ثبت‌نام:', authError);
         toast.error(`خطا در ثبت‌نام: ${authError.message}`);
         return;
       }
 
       if (!authData.user) {
+        console.error('❌ کاربر ایجاد نشد');
         toast.error('خطا در ایجاد حساب کاربری');
         return;
       }
+
+      console.log('✅ کاربر با موفقیت ایجاد شد:', authData.user.id);
 
       let coverImageUrl = null;
 
       // آپلود تصویر کاور اگر انتخاب شده
       if (coverImage) {
+        console.log('📷 شروع آپلود تصویر کاور...');
         const { url, error: uploadError } = await uploadCoverImage(coverImage, authData.user.id);
         if (uploadError) {
-          console.error('خطا در آپلود تصویر:', uploadError);
+          console.error('❌ خطا در آپلود تصویر:', uploadError);
           toast.error('خطا در آپلود تصویر کاور');
         } else {
           coverImageUrl = url;
+          console.log('✅ تصویر کاور آپلود شد:', coverImageUrl);
         }
       }
 
       // ایجاد کمپین
+      console.log('🎬 شروع ایجاد کمپین...');
+      const campaignData = {
+        artist_id: authData.user.id,
+        title: data.projectTitle,
+        description: data.projectDescription,
+        target_amount: data.targetAmount,
+        currency: data.currency,
+        deadline: data.deadline,
+        project_type: data.projectType,
+        cover_image_url: coverImageUrl,
+        status: 'pending' as const,
+        current_amount: 0
+      };
+      
+      console.log('📝 داده‌های کمپین:', campaignData);
+
       const { error: campaignError } = await supabase
         .from('campaigns')
-        .insert({
-          artist_id: authData.user.id,
-          title: data.projectTitle,
-          description: data.projectDescription,
-          target_amount: data.targetAmount,
-          currency: data.currency,
-          deadline: data.deadline,
-          project_type: data.projectType,
-          cover_image_url: coverImageUrl,
-          status: 'pending',
-          current_amount: 0
-        });
+        .insert(campaignData);
 
       if (campaignError) {
-        console.error('خطا در ایجاد کمپین:', campaignError);
-        toast.error('خطا در ایجاد کمپین');
+        console.error('❌ خطا در ایجاد کمپین:', campaignError);
+        toast.error(`خطا در ایجاد کمپین: ${campaignError.message}`);
         return;
       }
 
+      console.log('✅ کمپین با موفقیت ایجاد شد');
       toast.success('ثبت‌نام با موفقیت انجام شد! کمپین شما برای بررسی ارسال شده است.');
       
       // هدایت به داشبورد
       setTimeout(() => {
+        console.log('🔄 هدایت به داشبورد...');
         navigate('/dashboard');
       }, 2000);
 
     } catch (error) {
-      console.error('خطای غیرمنتظره:', error);
+      console.error('❌ خطای غیرمنتظره:', error);
       toast.error('خطای غیرمنتظره رخ داد');
     } finally {
       setIsSubmitting(false);

@@ -1,8 +1,9 @@
-
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = 'https://djwlryrqjbsiswzvmjnr.supabase.co'
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRqd2xyeXJxamJzaXN3enZtam5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyNDIxMTQsImV4cCI6MjA2NDgxODExNH0.McP7jF00jgs_Bq8FEvuFj22n-XHviMGt47mKqZQf70M'
+
+console.log('🔗 اتصال به Supabase:', supabaseUrl)
 
 export const supabase = createClient(supabaseUrl, supabaseKey)
 
