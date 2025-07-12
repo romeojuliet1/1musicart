@@ -9,7 +9,7 @@ const HeroSection = () => {
       {/* Background with breathing animation */}
       <div className="absolute inset-0 breathe-animation">
         <img 
-          src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" 
+          src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&q=80" 
           alt="نوازنده ایرانی در حال نواختن ساز سنتی" 
           className="w-full h-full object-cover"
         />
@@ -44,4 +44,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
