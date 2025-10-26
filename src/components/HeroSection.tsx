@@ -52,7 +52,7 @@ const HeroSection = () => {
       </div>
       
       {/* Hero Content */}
-      <div className="relative z-10 text-center px-6 md:px-12 max-w-4xl mx-auto text-white">
+      <div className="relative z-10 text-center px-6 md:px-12 w-full mx-auto text-white">
         <div className="animate-fade-in">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight font-vazir">
             حمایت از<br />

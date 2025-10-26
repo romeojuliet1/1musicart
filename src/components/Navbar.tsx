@@ -43,7 +43,7 @@ const Navbar = () => {
         scrolled ? 'glassmorphism bg-opacity-80' : 'bg-transparent'
       )}
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between flex-row-reverse">
+      <div className="w-full px-6 md:px-12 mx-auto flex items-center justify-between flex-row-reverse">
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           <NavLink to="/" className="flex items-center">
