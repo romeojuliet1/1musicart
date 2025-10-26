@@ -1,19 +1,54 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 const HeroSection = () => {
+  const [api, setApi] = React.useState<CarouselApi>();
+
+  const images = [
+    "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&q=80",
+  ];
+
+  useEffect(() => {
+    if (!api) return;
+
+    // Auto-play carousel
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [api]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with breathing animation */}
-      <div className="absolute inset-0 breathe-animation">
-        <img 
-          src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&q=80" 
-          alt="نوازنده ایرانی در حال نواختن ساز سنتی" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40"></div>
+      {/* Background Carousel with breathing animation */}
+      <div className="absolute inset-0">
+        <Carousel setApi={setApi} className="w-full h-full" opts={{ loop: true }}>
+          <CarouselContent>
+            {images.map((img, index) => (
+              <CarouselItem key={index}>
+                <div className="relative w-full h-screen">
+                  <img 
+                    src={img}
+                    alt={`موسیقی ایرانی ${index + 1}`}
+                    className="w-full h-full object-cover transition-all duration-1000 breathe-animation"
+                  />
+                  <div className="absolute inset-0 bg-black/40"></div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
       
       {/* Hero Content */}
